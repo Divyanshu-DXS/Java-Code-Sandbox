@@ -41,7 +41,7 @@ public class ScannerNextLineIssue {
         System.out.println("Double: " + k);
         System.out.println("Int: " + j);
 
-        // Resolved, now we get an output as expected. 
+        // Resolved, now we get an output as expected.
 
     }
 }
