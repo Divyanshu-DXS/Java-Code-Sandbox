@@ -18,11 +18,14 @@ public class SortingArrayTechniques {
         }
         System.out.println();
 
-        // Sorting techniques -- Bubble Sort
         SortingArrayTechniques ob = new SortingArrayTechniques();
-        System.out.println("Bubble Sort");
-        ob.bubbleSort(arr);
+        // Sorting techniques -- Bubble Sort
+        // System.out.println("Bubble Sort");
+        // ob.bubbleSort(arr);
         
+        // Sorting techniques -- Insertion Sort
+        System.out.println("Insertion Sort");
+        ob.insertionSort(arr);
 
         System.out.println("Sorted Array : ");
         for(int i: arr){
@@ -44,6 +47,20 @@ public class SortingArrayTechniques {
                     arr[j]=swap;
                 }
             }
+        }
+        return arr;
+    }
+
+    private int[] insertionSort(int[] arr) {
+
+        for(int i=1;i<arr.length;i++){
+            int index=i-1;
+            int currElement = arr[i];
+            while(index>=0 && currElement<arr[index]){
+                arr[index+1]=arr[index];
+                index--;
+            }
+            arr[index+1]=currElement;
         }
         return arr;
     }
