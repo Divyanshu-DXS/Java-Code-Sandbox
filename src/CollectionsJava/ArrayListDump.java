@@ -1,7 +1,6 @@
 package CollectionsJava;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -42,7 +41,7 @@ class ArrayListDump {
             System.out.println(st);
         }
         // Iterating on array using iterator 
-        Iterator itr= arr.iterator();
+        Iterator<String> itr= arr.iterator();
         while(itr.hasNext()){
             System.out.println("Iterating Elements : "+itr.next());
         }
@@ -58,6 +57,7 @@ class ArrayListDump {
         // contains function
         System.out.println(arr.contains("Divyanshu")); // false
         System.out.println(arr.contains("DIVYANSHU")); // true
+        
         System.out.println("Clearing the arraylist: ");
         arr.clear();
         System.out.println(arr);
