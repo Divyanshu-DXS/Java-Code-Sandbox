@@ -18,7 +18,10 @@ public class SortingArrayTechniques {
         }
         System.out.println();
 
-        SortingArrayTechniques ob = new SortingArrayTechniques();
+        //Below are various sorting methods called. You can un-comment the one you need and try run. 
+
+        SortingArrayTechniques ob = new SortingArrayTechniques();     
+           
         // Sorting techniques -- Bubble Sort
         // System.out.println("Bubble Sort");
         // ob.bubbleSort(arr);
