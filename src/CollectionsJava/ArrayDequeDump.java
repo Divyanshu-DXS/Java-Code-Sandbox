@@ -1,15 +1,14 @@
 package CollectionsJava;
 
 import java.util.ArrayDeque;
-import java.util.Queue;
 
 public class ArrayDequeDump {
     public static void main(String[] args) {
 
         ArrayDeque<Integer> adq = new ArrayDeque<>();
-        // Array Deque is a double eneded linked list
+        // Array Deque is a double eneded queues
         // This gives us options to access and operate on elements from the beginning of
-        // the list and the end of the list
+        // the list & the end of the list
         // additionally have options to access first or last elements explicitly
 
         adq.offer(12);
