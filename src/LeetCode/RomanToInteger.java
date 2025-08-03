@@ -41,13 +41,11 @@ public class RomanToInteger {
             if(s.charAt(i)=='c'){
                 if(i + 1 < s.length() && s.charAt(i+1)=='d'){
                     num+=400;
-                    i++;
-                    i++;
+                    i+=2;
                 }else
                 if(i + 1 < s.length() && s.charAt(i+1)=='m'){
                     num+=900;
-                    i++;
-                    i++;
+                    i+=2;
                 }
                 else {
                 num+=100;
@@ -60,13 +58,11 @@ public class RomanToInteger {
             if(s.charAt(i)=='x'){
                 if(i + 1 < s.length() && s.charAt(i+1)=='l'){
                     num+=40;
-                    i++;
-                    i++;
+                    i+=2;
                 }else
                 if(i + 1 < s.length() && s.charAt(i+1)=='c'){
                     num+=90;
-                    i++;
-                    i++;
+                    i+=2;
                 }
                 else {
                 num+=10;
@@ -79,13 +75,11 @@ public class RomanToInteger {
             if(s.charAt(i)=='i'){
                 if(i + 1 < s.length() && s.charAt(i+1)=='v'){
                     num+=4;
-                    i++;
-                    i++;
+                    i+=2;
                 }else
                 if(i + 1 < s.length() && s.charAt(i+1)=='x'){
                     num+=9;
-                    i++;
-                    i++;
+                    i+=2;
                 }
                 else {
                 num+=1;
@@ -104,6 +98,6 @@ public class RomanToInteger {
 
         System.out.println("Integer Conversion : " + romanToInt(roman));
         
-        
+        sc.close();
     }
 }
