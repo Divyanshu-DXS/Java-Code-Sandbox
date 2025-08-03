@@ -67,7 +67,7 @@ public class Anagrams {
 
         // output for method that converts strings to arrays and sorts and compares 
         System.out.println(isAnagramArrayApproach(a, b)? "Anagram": "Not an Anagram");
-
         
+        sc.close();
     }
 }
