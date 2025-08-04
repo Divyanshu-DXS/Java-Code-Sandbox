@@ -35,5 +35,17 @@ public class MapsDump {
         }
         System.out.println("Frequency of the characters in the string provided is: "+ charFrequency);
 
+        // getOrDefault() method 
+        // This method looks if any value corresponding to that key is present or not, if not it assigns default
+        // We can perform the same opertation as above also clean up the code a bit by using getOrDefault()
+        s= "abracadabra";
+        Map<Character,Integer> charFrequency2 = new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char c =s.charAt(i);
+            // Using getOrDefault method
+            charFrequency2.put(c,charFrequency2.getOrDefault(c,0)+1);
+        }
+        System.out.println("Frequency of the characters in the string provided is: "+ charFrequency);
+
     }
 }
