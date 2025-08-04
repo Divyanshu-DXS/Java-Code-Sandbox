@@ -20,10 +20,13 @@ public class HashSetDump {
         // Given an array, return true if any value appears at least twice.
         int[] nums = {12,3,4,12,4,2,1,52};
         Set<Integer> hs = new HashSet<>();
+        boolean result=false;
         for(int num : nums){
-            if(hs.contains(num)) System.out.println("The given arrays has duplicate values");
-
+            if(hs.contains(num)) result=true;
             hs.add(num);
         }
+        System.out.println((result)?"Duplicates exist" : "No duplicates");
+        // DONE
+
     }
 }
