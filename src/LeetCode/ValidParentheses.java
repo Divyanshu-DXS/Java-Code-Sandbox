@@ -32,6 +32,7 @@ public class ValidParentheses {
         String s = sc.nextLine();
 
         System.out.println("For sequence : " + s + " Result = " + isValid(s));
+        sc.close();
     }
 }
 
