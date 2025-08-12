@@ -48,5 +48,20 @@ public class HttpPostReq {
 
         System.out.println(response.body());
         System.out.println(response.statusCode());
+
+        // trying POST for registering a User on reqres
+        // endpoint : https://reqres.in/api/register
+        String registerUser = "{\"username\": \"User2001\",\n" +
+                "  \"email\": \"user2001.usr@example.com\",\n" +
+                "  \"password\": \"User2001@123\"}";
+        HttpRequest request1 = HttpRequest.newBuilder().uri(URI.create("https://reqres.in/api/register"))
+                                .headers("Content-Type","Applicatoin/json")
+                                .header("x-api-key", "reqres-free-v1")
+                                .POST(HttpRequest.BodyPublishers.ofString(body))
+                                .build();
+        HttpResponse response1=client.send(request1, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response1.body());
+        System.out.println(response1.statusCode());
+
     }
 }
