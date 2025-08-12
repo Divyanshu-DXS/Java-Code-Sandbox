@@ -63,5 +63,20 @@ public class HttpPostReq {
         System.out.println(response1.body());
         System.out.println(response1.statusCode());
 
+        // Trying Restful-API.dev for more requests
+        // endpoint: https://api.restful-api.dev/objects
+        String str = "{\"name\": \"Apple MacBook Pro 16\",\n" +
+                "   \"data\": {\n" +
+                "      \"year\": 2019,\n" +
+                "      \"price\": 1849.99,\n" +
+                "      \"CPU model\": \"Intel Core i9\",\n" +
+                "      \"Hard disk size\": \"1 TB\"\n" +
+                "   }}";
+        HttpRequest request2 = HttpRequest.newBuilder().uri(URI.create("https://api.restful-api.dev/objects"))
+                                .header("Content-Type","Application/JSON")
+                                .POST(HttpRequest.BodyPublishers.ofString(str)).build();
+        HttpResponse <String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response2.body());
+
     }
 }
