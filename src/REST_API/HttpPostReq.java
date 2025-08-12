@@ -78,5 +78,17 @@ public class HttpPostReq {
         HttpResponse <String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
         System.out.println(response2.body());
 
+        // Trying out https://jsonplaceholder.typicode.com
+        // endpoint : https://jsonplaceholder.typicode.com/posts
+        String jsonPlaceHolder = "{ \"title\": \"foo\",\n" +
+                "    \"body\": \"bar\",\n" +
+                "    \"userId\": \"1\" }";
+        HttpRequest request3 = HttpRequest.newBuilder().uri(URI.create("https://jsonplaceholder.typicode.com/posts"))
+                                .header("content-type","Application/json")
+                                .POST(HttpRequest.BodyPublishers.ofString(jsonPlaceHolder))
+                                .build();
+        HttpResponse<String> response3 = client.send(request3,HttpResponse.BodyHandlers.ofString());
+        System.out.println(response3.body());
+
     }
 }
