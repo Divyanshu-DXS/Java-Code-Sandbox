@@ -35,14 +35,19 @@ public class HttpPutReq {
                                 .header("content-type","Application/JSON")
                                 .POST(HttpRequest.BodyPublishers.ofString(postStr)).build();
         // Http Response
-        HttpResponse <String> PostResponse = client.send(request,HttpResponse.BodyHandlers.ofString());
-        System.out.println(PostResponse.body());
-        // ID received - ff8081819782e69e0198a20507f000d9
+        HttpResponse <String> postResponse = client.send(request,HttpResponse.BodyHandlers.ofString());
+        System.out.println(postResponse.body());
+
+        String jsonResponse = postResponse.body();
+        String id = jsonResponse.split("\"id\":\"")[1].split("\"")[0];
+        System.out.println(id);
+        // ID received - id
+
 
         // Doing a PUT request now
         String putStr = "{\"name\": \"DXS Device\", \"data\": {\"price\": 9999, \"color\": \"Skull Grey\"}}";
         HttpRequest putRequest = HttpRequest.newBuilder()
-                                .uri(URI.create("https://api.restful-api.dev/objects/ff8081819782e69e0198a20a05890101"))
+                                .uri(URI.create("https://api.restful-api.dev/objects/"+id))
                                 .header("content-type","Application/JSON")
                                 .POST(HttpRequest.BodyPublishers.ofString(putStr)).build();
         HttpResponse<String> putResponse = client.send(putRequest, HttpResponse.BodyHandlers.ofString());
