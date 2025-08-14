@@ -17,6 +17,16 @@ public class RegexExample {
             System.out.println(matcher.group());
         }
 
+        // trying to get a pattern that finds all words that start with an upper case character and end with 'ing'
+        str= "This is A new String. Testing this to Check Pattern Matching. Hopefully this thing works";
+        // expected output = String, Testing, Matching
+        pattern=Pattern.compile("\\b[A-Z][a-zA-Z0-9]*ing\\b");
+        matcher=pattern.matcher(str);
+        while(matcher.find()){
+            System.out.println(matcher.group());
+        }
+        
+
 
     }
 }
