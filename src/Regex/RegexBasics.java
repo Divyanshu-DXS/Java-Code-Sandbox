@@ -66,7 +66,7 @@ public class RegexBasics {
         getMatchedPatterns(str, noVowels);
 
 
-        
+
     }
 
     private static Matcher getMatchedPatterns(String str, Pattern pattern) {
