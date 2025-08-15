@@ -21,6 +21,10 @@ The java.util.regex package primarily consists of the following three classes :
 - [a-zA-Z0-9] → letters and digits.
 - [^abc] → any character except a, b, c.
 
-
-
-
+<b>Some Shortcuts</b>
+- [\w] : represents : [A-Za-z0-9_]
+- [\W] : represents : [^A-Za-z0-9_]
+- [\d] : represents : [0-9]
+- [\D] : represents : [^0-9]
+- [\s] : represents : [\t, ]whitespace
+- [\S] : represents : non-whitespace

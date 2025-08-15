@@ -32,6 +32,41 @@ public class RegexBasics {
         // matches all numbers and characters
         numAndChar = Pattern.compile("[A-Za-z0-9]");
         getMatchedPatterns(str, numAndChar);
+
+        // ******************************************
+        // Mini Exercises
+        // Match all vowels in a sentence.
+        // Match all digits in "My phone: 222-333-0009".
+        // Match a literal string "1.01" (don’t forget to escape the dot).
+        // Match all characters except vowels.
+        System.out.println();
+        System.out.println("******************************************");
+        System.out.println("Mini Excercises"); 
+
+        str = "Mini Exercise Text Syntax. Author : DevDXS | Version 1.01 + Phone #: 222-333-0009";
+        Pattern vowels, phoneNum, litString, noVowels;
+        vowels =Pattern.compile("[aeiouAEIOU]");
+        System.out.println("Vowels in the given String are: ");
+        getMatchedPatterns(str, vowels);
+
+        phoneNum = Pattern.compile("222-333-0009");
+        System.out.println("Phone num present in the given String : ");
+        getMatchedPatterns(str, phoneNum);
+        // alternatively
+        phoneNum = Pattern.compile("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d");
+        System.out.println("ALternate method to get the phone # in the given String : ");
+        getMatchedPatterns(str, phoneNum);
+
+        litString = Pattern.compile("\\d\\.\\d\\d");
+        System.out.println("Literal String with decimal located : + ");
+        getMatchedPatterns(str, litString);
+
+        noVowels = Pattern.compile("[^aeiouAEIOU]");
+        System.out.println("No Vowels: ");
+        getMatchedPatterns(str, noVowels);
+
+
+        
     }
 
     private static Matcher getMatchedPatterns(String str, Pattern pattern) {
