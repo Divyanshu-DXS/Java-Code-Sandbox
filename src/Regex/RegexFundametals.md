@@ -12,6 +12,15 @@ The java.util.regex package primarily consists of the following three classes :
 - PatternSyntaxException : An exception to handle any unchecked exception. for instance any syntax error in pattern. 
 
 
+## Character Classes []
+
+- [abc] → matches any one character a or b or c.
+- [a-z] → any lowercase letter.
+- [A-Z] → any uppercase letter.
+- [0-9] → any digit.
+- [a-zA-Z0-9] → letters and digits.
+- [^abc] → any character except a, b, c.
+
 
 
 
