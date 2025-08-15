@@ -36,5 +36,15 @@ public class RegexExample {
         while(matcher.find()){
             System.out.println(matcher.group());
         }
+
+        // Testing to find an email address in the text given 
+        str = "This is a text String containing email addresses : example@exp.com, example_123.123@xyz.com, " +
+        "123Randomem+il@random.com";
+        pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}");
+        pattern2 = Pattern.compile("[\\w\\.+%-]+@[\\w\\.-]+\\.[\\w]{2,}");  // written the pattern in an alternate way
+        matcher=pattern2.matcher(str);
+        while(matcher.find()){
+            System.out.println(matcher.group());
+        }
     }
 }
