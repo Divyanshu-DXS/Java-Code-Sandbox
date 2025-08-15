@@ -28,3 +28,18 @@ The java.util.regex package primarily consists of the following three classes :
 - [\D] : represents : [^0-9]
 - [\s] : represents : [\t, ]whitespace
 - [\S] : represents : non-whitespace
+
+## Quantifiers 
+
+Building Blocks
+
+- *	: 0 or more times	
+- +	: 1 or more times	
+- ?	: 0 or 1 time	
+- {n} :	Exactly n times	
+- {n,} : n or more times	
+- {n,m} : Between n and m times	
+
+Greedy vs Lazy Quantifier 
+By default, quantifiers are greedy — they take as much as they can.<br>
+Lazy quantifier = add ? -- Stops at first possible match 
