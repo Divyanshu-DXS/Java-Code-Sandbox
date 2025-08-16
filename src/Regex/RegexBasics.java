@@ -14,23 +14,28 @@ public class RegexBasics {
         str= "This is a RANDOM text to test character classes. ABC abcde AbcDeFG 0123Abc 012 abb123ads abc";
         Pattern upperCase, lowercase, onlyNum, numAndChar, picky;
         // matches all upper case characters found 
-        upperCase = Pattern.compile("[A-Z]");
+        upperCase = Pattern.compile("[A-Z]"); // to find words instead -> "[A-Z]+"
+        System.out.println("UPPER CASE: ");
         getMatchedPatterns(str, upperCase);
 
         // matches all lower case characters found
         lowercase = Pattern.compile("[a-z]");
+        System.out.println("LOWER CASE: ");
         getMatchedPatterns(str, lowercase);
 
         // matches only numbers
         onlyNum = Pattern.compile("[0-9]");
+        System.out.println("NUMBERS: ");
         getMatchedPatterns(str, onlyNum);
 
-        // mactches all except a pattern provided 
+        // matches all except a pattern provided 
         picky= Pattern.compile("[^abcABC]");
+        System.out.println("BEING PICKY: ");
         getMatchedPatterns(str, picky);
 
         // matches all numbers and characters
         numAndChar = Pattern.compile("[A-Za-z0-9]");
+        System.out.println("ALPHANUMERIC: ");
         getMatchedPatterns(str, numAndChar);
 
         // ******************************************
@@ -53,7 +58,7 @@ public class RegexBasics {
         System.out.println("Phone num present in the given String : ");
         getMatchedPatterns(str, phoneNum);
         // alternatively
-        phoneNum = Pattern.compile("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d");
+        phoneNum = Pattern.compile("\\d{3}-\\d{3}-\\d{4}"); // \\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d
         System.out.println("ALternate method to get the phone # in the given String : ");
         getMatchedPatterns(str, phoneNum);
 
