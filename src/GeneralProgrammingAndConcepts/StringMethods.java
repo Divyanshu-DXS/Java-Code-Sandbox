@@ -1,5 +1,7 @@
 package GeneralProgrammingAndConcepts;
 
+import java.util.StringTokenizer;
+
 public class StringMethods {
     public static void main(String[] args) {
         String s = "Abcdefghijklmasiohfaiojfopwj";
@@ -19,5 +21,26 @@ public class StringMethods {
         System.out.println(s.contains("new"));
         System.out.println(s.codePointAt(s.indexOf('a'))); // returns character unicode value -- ascii value
         System.out.println((int)'a'); // testing ascii value of a character
+        
+        // String Parsing 
+        // Parsing to another data types
+        String num ="123";
+        int n = Integer.parseInt(num);
+        System.out.println(n);
+        double d = Double.parseDouble(num);
+        System.out.println(d);
+
+        // using split()
+        String newSt = "This is a space separated String value. That also has, commas and . , periods and ;; semicolons ";
+        String[] parsedSt = newSt.split(", ; #");
+        for(String stri: parsedSt){System.out.println(stri);}
+
+        // Using tokenizer, this is legacy and split() is usually preferred instead. 
+        String str2 = " one two three ";
+        StringTokenizer tokenz = new StringTokenizer(str2);
+        while(tokenz.hasMoreTokens()){
+            System.out.println(tokenz.nextToken());
+        }
+
     }
 }
