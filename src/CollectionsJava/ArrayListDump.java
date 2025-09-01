@@ -61,6 +61,30 @@ class ArrayListDump {
         System.out.println("Clearing the arraylist: ");
         arr.clear();
         System.out.println(arr);
+        System.out.println();
+        System.out.println();
+        System.out.println("##########################################################");
+        System.out.println();
+        System.out.println();
+
+        // Some more concepts
+        // Array list constructor summary
+        List<String > list = new ArrayList<>(); // Constructs an empty list with an initial capacity of ten.
+        list.add("Hello");
+        list.add("I");
+        list.add("Am");
+        list.add("New");
+        list.add("text");
+
+        /* Constructs a list containing the elements of the specified collection,
+        in the order they are returned by the collection's iterator.*/
+        List<String> list2 = new ArrayList<>(list);
+        System.out.println(list2);
+
+        // Constructs an empty list with the specified initial capacity.
+        List <String> list3 = new ArrayList<>(20);
+        System.out.println(list3.size());
+
     }
 }
 
