@@ -1,9 +1,6 @@
 package CollectionsJava;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 class ArrayListDump {
     public static void main(String[] args) {
@@ -75,6 +72,7 @@ class ArrayListDump {
         list.add("Am");
         list.add("New");
         list.add("text");
+        list.sort(Comparator.naturalOrder());
 
         /* Constructs a list containing the elements of the specified collection,
         in the order they are returned by the collection's iterator.*/
@@ -84,6 +82,7 @@ class ArrayListDump {
         // Constructs an empty list with the specified initial capacity.
         List <String> list3 = new ArrayList<>(20);
         System.out.println(list3.size());
+
 
     }
 }

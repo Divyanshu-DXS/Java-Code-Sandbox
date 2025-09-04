@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class RegexBasics {
     public static void main(String[] args) {
         // Literal Matching 
-        String str = "This String is for reference purpose only. The literal String we are going to look for could or could not be present.";
+        String str = "This String is for reference purpose only. The literal String we are going to look for could or could not be present. String";
         Pattern pattern = Pattern.compile("String"); // Finds the word "String" in text
         Matcher matcher = getMatchedPatterns(str, pattern);
 
@@ -14,27 +14,27 @@ public class RegexBasics {
         str= "This is a RANDOM text to test character classes. ABC abcde AbcDeFG 0123Abc 012 abb123ads abc";
         Pattern upperCase, lowercase, onlyNum, numAndChar, picky;
         // matches all upper case characters found 
-        upperCase = Pattern.compile("[A-Z]"); // to find words instead -> "[A-Z]+"
+        upperCase = Pattern.compile("[A-Z]+"); // to find words instead -> "[A-Z]+"
         System.out.println("UPPER CASE: ");
         getMatchedPatterns(str, upperCase);
 
         // matches all lower case characters found
-        lowercase = Pattern.compile("[a-z]");
+        lowercase = Pattern.compile("[a-z]*");
         System.out.println("LOWER CASE: ");
         getMatchedPatterns(str, lowercase);
 
         // matches only numbers
-        onlyNum = Pattern.compile("[0-9]");
+        onlyNum = Pattern.compile("[0-9]+");
         System.out.println("NUMBERS: ");
         getMatchedPatterns(str, onlyNum);
 
         // matches all except a pattern provided 
-        picky= Pattern.compile("[^abcABC]");
+        picky= Pattern.compile("[^RNDOM]");
         System.out.println("BEING PICKY: ");
         getMatchedPatterns(str, picky);
 
         // matches all numbers and characters
-        numAndChar = Pattern.compile("[A-Za-z0-9]");
+        numAndChar = Pattern.compile("[A-Za-z0-9]+");
         System.out.println("ALPHANUMERIC: ");
         getMatchedPatterns(str, numAndChar);
 
@@ -48,7 +48,7 @@ public class RegexBasics {
         System.out.println("******************************************");
         System.out.println("Mini Excercises"); 
 
-        str = "Mini Exercise Text Syntax. Author : DevDXS | Version 1.01 + Phone #: 222-333-0009";
+        str = "Mini Exercise Text Syntax. Author : DevDXS | Version 1.01 + Phone #: 222-696-0009 : 123-123-1234";
         Pattern vowels, phoneNum, litString, noVowels;
         vowels =Pattern.compile("[aeiouAEIOU]");
         System.out.println("Vowels in the given String are: ");
