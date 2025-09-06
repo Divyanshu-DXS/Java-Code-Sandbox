@@ -38,3 +38,43 @@ Things like configuration and maintainence would not be managed internally,
 leaving the org vulnerable to risks, like server disruptions and performance issues, etc. 
 - Testing Difficulties : Testing code using serverless architecture requires you to test each individual function and validate its integration and interaction with other serverless functions. 
 - Not ideal for long-running processes : not suited for long-running processes because they may surpass time limits resulting in timeouts and data loss. 
+
+
+## AWS Lambda
+
+This is a serverless computing service provided by AWS. Users of AWS Lambda create functions, self contained applications written in one of the supported languages and upload them to AWS Lambda.
+These can then be executed in a flexible and efficient manner.<br>
+These functions can perform any kind o computing tasks from serving webpages, and processing streams of data to calling APIs and integrating with other services.
+<br>
+AWS Lambda is a fully managed service that takes care of all the infrastructure for you.
+
+###  Why is AWS Lambda an essential part of the Serverless architecture?
+
+When building Serverless applications, AWS Lambda is one of the main candidates for running the application code. 
+Typically, to complete a Serverless stack you’ll need:
+
+- a computing service;
+- a database service; and
+- an HTTP gateway service.
+
+
+Lambda fills the primary role of the compute service on AWS. 
+It also integrates with many other AWS services 
+and, together with API Gateway, DynamoDB and RDS, forms the basis for Serverless solutions for those using AWS. 
+Lambda supports many of the most popular languages and runtimes. 
+So it’s a good fit for a wide range of Serverless developers.
+
+### Benefits of AWS Lambda
+
+- Pay per use
+- Fully Managed infrastructure
+- Automatic Scaling 
+
+### Limitations 
+
+- Cold start time : When a function is started in response to an event, there maybe a small latency b/w event and when function runs. 
+This can make it hard to rely on AWS Lambda for latency critical applications. Work around are however available. 
+-  Function Limits : Execution time 
+
+
+
