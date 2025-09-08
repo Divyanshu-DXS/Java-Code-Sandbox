@@ -13,6 +13,8 @@ public class LamdaRunner {
         // we can define lamdas below to perform different operations on the arguments provided
         // Adding
         Calculator add = (a,b) -> {return a+b;};
+        // this above expression can be written without the return keyword and the {} as it only has a single expression
+        // so it could have been re written as (a,b)->a+b;,
         System.out.println(add.calculate(12,10));
         // Subtracting
         Calculator subtract = (a,b) -> {return a-b;};
@@ -32,17 +34,17 @@ public class LamdaRunner {
         Calculator2 calc2 = null;
         switch (c){
             case '+':
-                calc2 =(x,y,z)->{return x+y;};
+                calc2 =(x,y,z)->x+y;
                 break;
             case '-':
-                calc2 =(x,y,z)->{return x-y;};
+                calc2 =(x,y,z)->x-y;
                 break;
             case '*':
-                calc2=(x,y,z)->{return x*y;};
+                calc2=(x,y,z)->x*y;
                 break;
             case '/':
                 try{
-                calc2=(x,y,z)->{return x/y;};}
+                calc2=(x,y,z)->x/y;}
                 catch (ArithmeticException e){
                     System.out.println("Division by 0 not allowed");
                 }
