@@ -4,15 +4,31 @@ public class IteratingCollections {
     public static void main(String[] args) {
         
         System.out.println("Different Iteration Techniques");
-        
-        // Using Iterator
         List<String> names= new ArrayList<>(List.of("EMINEM", "DR DRE", "ICE CUBE","50 CENT", "SNOOP"));
+        // Using for loop - the very basic approach
+        System.out.println(">>> FOR LOOP >>>");
+        for(int i=0;i<names.size();i++){
+            System.out.println(names.get(i));
+        }
+        System.out.println(">>> FOR LOOP ENDS >>>");
+        System.out.println();
+
+        // Using Iterator
+        System.out.println(">>> ITERATOR >>>");
         Iterator<String> it = names.iterator();
         while(it.hasNext()){
             // this iterates over the list and it.next() prints the value at the current node
             System.out.println(it.next());
         }
+        System.out.println(">>> ITERATOR ENDS >>>");
+        System.out.println();
+
+        // Unlike Arrays ArrayLists can be directly printed using sout
+        // That is because ArrayLists and other collections that implement collection framework override the toString() method
+        System.out.println("PRINTING DIRECTLY >>>");
         System.out.println(names);
+        System.out.println();
+
 
         Iterator<String> xx = names.iterator();
         while(xx.hasNext()){
