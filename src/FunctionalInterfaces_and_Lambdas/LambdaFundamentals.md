@@ -4,6 +4,25 @@
 
 This is an interface with exactly one abstract method. There can be more default or static methods in it but precisely one abstract method. 
 
+### Built-In Java Functional Interfaces
+
+Since Java SE 1.8 onwards, there are many interfaces that are converted into functional interfaces. 
+All these interfaces are annotated with @FunctionalInterface. These interfaces are as follows:
+
+- Runnable: This interface only contains the run() method.
+- Comparable: This interface only contains the compareTo() method.
+- ActionListener: This interface only contains the actionPerformed() method.
+- Callable: This interface only contains the call() method.
+
+###Types of Functional Interfaces in Java
+
+Java SE 8 included four main kinds of functional interfaces which can be applied in multiple situations as mentioned below:
+   
+- Consumer 
+- Predicate
+- Function 
+- Supplier
+
 ## Lambdas 
 
 A lambda expression is a short block of code which takes in parameters and returns a value. 
