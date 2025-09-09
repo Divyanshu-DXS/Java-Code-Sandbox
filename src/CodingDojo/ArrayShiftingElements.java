@@ -32,7 +32,7 @@ public class ArrayShiftingElements {
     // Brute approach
     private static void rotateElements(int[] arr, int k) {
         int n = arr.length;
-        k = k % n; // handle k > n 
+        k = k % n; // handle k > n
 
         for (int i = 0; i < k; i++) {
             int last = arr[n - 1];
