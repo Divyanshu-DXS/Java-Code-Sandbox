@@ -1,5 +1,14 @@
 package FunctionalInterfaces_and_Lambdas.BasicExamples;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+
 public class RunClass {
     public static void main(String[] args) {
 
@@ -43,6 +52,23 @@ public class RunClass {
         // 2. With Lambdas
         Greeter greeterObj2 = (msg) -> msg;
         System.out.println(greeterObj2.greet("Hello World this is Lambdas"));
+
+        // Built in functional interfaces
+        // PREDICATE - Write a Predicate<String> to check if a string starts with "A"
+        Predicate<String> checkChar = c -> c.charAt(0)=='A';
+        System.out.println(checkChar.test("Alpha"));
+        // FUNCTION - Write a Function<Integer, String> to convert an integer to "Number: x".
+        Function<Integer,String> convertIntString = (x)->"Number :"+x;
+        System.out.println(convertIntString.apply(101));
+        // CONSUMER - Write a Consumer<String> that prints a string in uppercase.
+        Consumer<String> convertUpperCase =(str)->{
+            System.out.println(str.toUpperCase());
+        };
+        convertUpperCase.accept("ChAngE me AlL tO UPPEr CaSE");
+        // SUPPLIER - Write a Supplier<String> that returns today’s date as a string.
+        Supplier<String> todaysDate =()-> LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        System.out.println("Todays Date : "+todaysDate.get());
+
 
     }
 }

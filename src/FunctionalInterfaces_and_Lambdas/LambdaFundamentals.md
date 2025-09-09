@@ -18,10 +18,17 @@ All these interfaces are annotated with @FunctionalInterface. These interfaces a
 
 Java SE 8 included four main kinds of functional interfaces which can be applied in multiple situations as mentioned below:
    
-- Consumer 
-- Predicate
-- Function 
-- Supplier
+- Consumer<T>   :   takes T, returns nothing (void).
+- Predicate<T>  :   takes T, returns boolean.
+- Function<T,R> :   takes T, returns R 
+- Supplier<T>   :   takes nothing, returns T
+- Bi-Functional Interfaces :  
+-> BiPredicate<T, U> → takes two args, returns boolean.<br>
+-> BiFunction<T, U, R> → takes two args, returns result.<br>
+-> BiConsumer<T, U> → takes two args, returns nothing.<br>
+
+                              
+                              
 
 ## Lambdas 
 
