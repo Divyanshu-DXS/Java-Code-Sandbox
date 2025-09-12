@@ -8,6 +8,7 @@ It has an average time complexity of O(1) for insertion and retrieval.
 ## How HashMap works internally?
    
 Internally a HashMap implements a HashTable internally which comprises of 2 important data structures linkedList and Arrays.
+<code>ARRAY OF LINKED LIST</code>
 <u>Organised into arrays of buckets, where each element represents a separate node.</u> 
 #### InnerNode Important
 Within the LinkedList the inner Node class includes attributes such as a hash value, key, value and reference to the next node.
@@ -49,4 +50,18 @@ Within the LinkedList the inner Node class includes attributes such as a hash va
 - Hashmaps in java do not allow duplicate keys so each key should be unique. 
 - This ensures that each key is associated with only one value, facilitating efficient retrieval of values based on keys. 
 
-  
+
+#### MORE ON HASHING
+
+Hashing is changing the form of data. There are a lof of algorithms that help us with hashing. 
+
+    - SHA1
+    - SHA256 , etc. 
+
+The concept of hashing is widely used in order to store passwords. What hashing in this does it change the password enetred and stores it in its hashed form. 
+
+- We use hashfunction to compute buckets and more data to determine the bucket indices for a key
+- once the bucket index is calculated, it then searches at that index and checks if the key is present or not, if yes - it updates the value, if not it creates a new key value pair. 
+- When the threshold of the capacity is breached, then the arrays are resized with a new capacity and reshashing happens
+- rehashing may change the bucket indexes of the already stored elements and store them in different buckets. 
+
