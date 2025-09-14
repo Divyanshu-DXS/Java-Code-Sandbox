@@ -6,6 +6,19 @@ public class Student {
     int marks1,marks2,marks3;
     String random;
 
+    public Student(String name, String rollNo, int marks1, int marks2, int marks3, String random) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.marks1 = marks1;
+        this.marks2 = marks2;
+        this.marks3 = marks3;
+        this.random = random;
+    }
+
+    public Student() {
+        System.out.println("Called from default constructor...");
+    }
+
     public char getGrade(){
         int avg=(marks1+marks2+marks3)/3;
         System.out.println("Average marks for this student is : "+ avg);
