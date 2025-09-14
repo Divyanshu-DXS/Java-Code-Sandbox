@@ -16,16 +16,20 @@ public class HashVsEquals {
         // Working with objects
         HsEqualsExampleStudent student1 = new HsEqualsExampleStudent("Dev", "SoftwareArchitecture");
         HsEqualsExampleStudent student2 = new HsEqualsExampleStudent("Dev", "SoftwareArchitecture");
+        // Overwritten the equals() in the HsEqualsExampleStudent class
         System.out.println("Comparing objects with the equals() : "+student1.equals(student2));
         // By default, the equals() method inherited from java.lang.Object performs a reference comparison.
         // This means it returns true only if both object references point to the exact same memory location and since these 2 are different objects it returns false.
         // In order to have equals compare the content instead we would have to override the equals method in the HsEqualsExampleStudent class
 
+        // hashCode() has also been overwritten now in the HsEqualsExampleStudent class
         System.out.println("Comparing Object's (With Identical Set Of Data Members) hashcodes : "+(student1.hashCode()==student2.hashCode()));
         System.out.println("HashCode for Student 1 : " + student1.hashCode());
         System.out.println("HashCode for Student 2 : " + student2.hashCode());
         // hashcode() method generates a unique value based on the object's memory address or reference, not its internal data.
         // To make the hash code the same for objects with the same data, you must override the hashCode() method in your class to compute the hash based on the object's data members
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println();
 
     }
 }
