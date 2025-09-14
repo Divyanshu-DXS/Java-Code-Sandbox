@@ -1,5 +1,6 @@
 package GeneralProgrammingAndConcepts.ClassesNObjects;
 
+import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class StudentMain {
     public static void main(String[] args)
             throws ClassNotFoundException, IllegalAccessException,
             InstantiationException, NoSuchMethodException,
-            InvocationTargetException, CloneNotSupportedException {
+            InvocationTargetException, CloneNotSupportedException, IOException {
         Student obj = new Student();
         obj.name="Divyanshu";
         obj.rollNo="B100010102";
@@ -30,6 +31,8 @@ public class StudentMain {
         // Using the new keyword
         Student s1 = new Student();
         System.out.println("Reference for object S1: "+ s1);
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
 
         // # 2
         // Using the Class 'class' to create an object by making use of method newInstance()
@@ -40,6 +43,8 @@ public class StudentMain {
         // On a similar context the class can also be loaded as below :
         Student s3 =Student.class.newInstance();
         System.out.println("Reference fot object s3: "+ s3);
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
 
         // # 3
         // Using Constructor class newInstance method.
@@ -57,6 +62,8 @@ public class StudentMain {
         * 3. When Class class newInstance invokes a constructor and throws an exception (checked or unchecked) will throw all the exceptions.
         * However, if the exception is thrown by Constructor class it throws only a single exception - InvocationTargetException
         */
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
 
         // # 4
         // Using clone() of the Object class
@@ -69,7 +76,7 @@ public class StudentMain {
         s4.subjects=new ArrayList<String>(List.of("English","computers","Physics","History"));
         Student s5 = (Student)s4.clone();
         System.out.println("Reference for object s5: "+s5); // You would notice when this runs, the constructor does not get called.
-        // reference address is also different from s4 altough s5 is cloned.
+        // reference address is also different from s4 although s5 is cloned.
         System.out.println("S4 name value is : "+ s4.name + "\n" + "S5 name value is : "+s5.name);
         System.out.println("S4 Subject array list is : " + s4.subjects);
         System.out.println("S5 subjects array list is : "+s5.subjects);
@@ -89,8 +96,27 @@ public class StudentMain {
         // For immutable types (like String), shallow copy is safe and fine
         // For mutable types (like arrays, lists, or custom objects) - changes in one affect the other.
         // since both objects are sharing the same underlying reference
+        // Testing to see if it works the other way round too. should work since the array lists are pointing to same reference
+        s5.subjects.add("Data Structures and Algorithms");
+        System.out.println("S4 Subject array list is : " + s4.subjects);
+        System.out.println("S5 subjects array list is : "+s5.subjects); // Yes
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
+        // # 5
+        // Using Deserialization to create an object
+        // To create an object using deserialization, the object has to be searalized first.
+        // Serialization
+        FileOutputStream fos = new FileOutputStream("CreatingObjects.txt");
+        ObjectOutputStream ous = new ObjectOutputStream(fos);
+        Student ss = new Student();
+        ous.writeObject(ss);
 
+        // Deserialization
+        FileInputStream fis = new FileInputStream("CreatingObjects.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        // Creating the Student class object
+        Student s6 = (Student) ois.readObject();
+        System.out.println("Reference for object S6: "+s6);
     }
 }
 

@@ -1,9 +1,10 @@
 package GeneralProgrammingAndConcepts.ClassesNObjects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student implements Cloneable{
+public class Student implements Cloneable, Serializable {
     String name;
     String  rollNo;
     int marks1,marks2,marks3;
