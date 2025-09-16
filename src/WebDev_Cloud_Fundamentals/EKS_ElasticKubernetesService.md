@@ -38,7 +38,20 @@ Worker nodes are deployed across different Availability Zones ensuring fault tol
 4. Deploy and Run Kubernetes Applications : With the cluster set up and connected: You can deploy your containerized applications onto the worker nodes.
 --> Kubernetes orchestrates these deployments, ensuring containers are distributed across the nodes and scaling them as needed.
 --> Applications can be updated, scaled, and monitored using Kubernetes-native features such as deployments, services, and DaemonSets.
-                                            
+
+*** 
+
+## Self Managed Kubernetes cluster vs Amazon EKS
+
+| Function  | SelfManaged | Amazon EKS |
+|-----------|-------------|------------|
+| Management Responsibility| Customer has Full control and responsibility for managing the cluster.| AWS manages the control plane customer manages the worker nodes|
+| Control Plane | You need to install, configure, and manage the Kubernetes control plane, including the API server , scheduler and etcd. | AWS handles the control plane including high availability, scaling and updates.|
+| Operational Overhead | Higher overhead due to managing updates, security patches and monitoring of the entire cluster. | AWS manages the control plane’s availability, security and scaling, reducing operational overhead |
+| Infrastructure Setup | You need to configure and provision the infrastructure. | AWS simplifies infrastructure management; you only need to provision worker nodes |
+| Security and Compliance | You are responsible for securing the cluster, applying patches and ensuring compliance |  AWS provides built-in security, automatic control plane updates and compliance certifications | 
+| Monitoring and Logging | You need to set up and manage your monitoring, logging and alerting systems | EKS integrates with AWS CloudWatch and AWS CloudTrail for monitoring, logging and auditing with minimal setup. |
+***
 
 ## Summary 
 
