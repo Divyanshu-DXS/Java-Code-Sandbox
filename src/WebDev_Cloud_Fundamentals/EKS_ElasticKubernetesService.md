@@ -50,7 +50,7 @@ Worker nodes are deployed across different Availability Zones ensuring fault tol
 | Operational Overhead | Higher overhead due to managing updates, security patches and monitoring of the entire cluster. | AWS manages the control plane’s availability, security and scaling, reducing operational overhead |
 | Infrastructure Setup | You need to configure and provision the infrastructure. | AWS simplifies infrastructure management; you only need to provision worker nodes |
 | Security and Compliance | You are responsible for securing the cluster, applying patches and ensuring compliance |  AWS provides built-in security, automatic control plane updates and compliance certifications | 
-| Monitoring and Logging | You need to set up and manage your monitoring, logging and alerting systems | EKS integrates with AWS CloudWatch and AWS CloudTrail for monitoring, logging and auditing with minimal setup. |
+| Monitoring and Logging | You need to set up and manage your monitoring, logging and alerting systems | EKS integrates with AWS CloudWatch and AWS CloudTrail for monitoring, logging and auditing with minimal setup.
 ***
 
 ## Summary 
