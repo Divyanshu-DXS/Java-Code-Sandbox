@@ -82,19 +82,34 @@ public class EmployeeMain {
 //        // to make class immutable - we remove all the setter methods and also make all the data members private and final
 
         System.out.println("********************************");
-        // Now that we have made the class immutable the object can not be changed and hence the hashcode returned should always be the same.
-        // But still this does not ensure 100 % immutability
-        // Lets add one more data member to the Employee class and see how would that impact
-        // We have now added a techStack arraylist corresponding to each object above.
-        // the Employee class is still immutable with final and no setter methods
-        // But this array list that has been added to it, although final is made still mutable and subject to change
-        // this is how :
-        System.out.println(dev);
-        dev.getTechStack().add("AI integration");
-        System.out.println("Modification has been now made to dev's TechStack");
-        System.out.println(dev);
-        // which means that the object must have changed again and getting this object will result in a  null value again
+//        // Now that we have made the class immutable the object can not be changed and hence the hashcode returned should always be the same.
+//        // But still this does not ensure 100 % immutability
+//        // Lets add one more data member to the Employee class and see how would that impact
+//        // We have now added a techStack arraylist corresponding to each object above.
+//        // the Employee class is still immutable with final and no setter methods
+//        // But this array list that has been added to it, although final is made still mutable and subject to change
+//        // this is how :
+//        System.out.println(dev);
+//        dev.getTechStack().add("AI integration");
+//        System.out.println("Modification has been now made to dev's TechStack");
+//        System.out.println(dev);
+//        // which means that the object must have changed again and getting this object will result in a  null value again
+//        System.out.println(empLocation.get(dev));
+
+        System.out.println("********************************");
+        // but still poses a challenge which brings us to another important point to consider
+        // If the class is returning any type of data that is primitive in nature like int, float, double etc. then that is perfectly fine and needs no changes
+        // But in case if the object being returned is a non primitive type, object then that should be taken care of, in that case :
+        // NEVER RETURN THE ORIGINAL OBJECT. INSTEAD RETURN A CLONED OBJECT.
+        // the getTechStack() method has been modified in the Employee class now
+        // let us test this again :
+        dev.getTechStack().add("AI Integration");
+        dev.getTechStack().add("Lead Engineer");
+        System.out.println("Dev's techsatack modified again. Checking if the modifed object returns the value now ... ");
         System.out.println(empLocation.get(dev));
+        // returns 'Waterloo' the expected value for the key.
+
+
 
     }
 }

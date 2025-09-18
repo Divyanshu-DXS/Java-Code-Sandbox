@@ -1,5 +1,6 @@
 package CollectionsJava.Maps.ClassAsAKey;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,8 +34,9 @@ public class Employee {
         return dept;
     }
 
+    //modified this to return a cloned object instead and not the original object to maintain immutability of objects returned and hashcode
     public List<String> getTechStack() {
-        return techStack;
+        return new ArrayList<>(techStack);
     }
 
     @Override
@@ -49,7 +51,6 @@ public class Employee {
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
