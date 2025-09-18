@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Employee {
+public final class Employee {
 
     // Making class immutable
+
+    // the class has also been made final, considering that this class then can not be extended by any other class
+    // If it could be extended, and any modification made to that class could then also impact the object for this class
+
     // Removed all setter methods
     // changed all data members to final
 
