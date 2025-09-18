@@ -57,5 +57,20 @@ public class EmployeeMain {
         System.out.println("HashCode for the 'dev' object: "+dev.hashCode());
         System.out.println("HashCode for the 'new' object: "+(new Employee("Dev", 1010, "Development").hashCode()));
 
+        // this then brings us to the important point of class mutability
+        // because of which if there is a change made, the object refeences would not match and the previously put object can be forever lost in the map as we would not be able to get to that index
+        // for instance lets change the role for an employee listed and check again
+        // using object - jatin
+        System.out.println("Current value for the object Jatin is : "+empLocation.get(jatin));
+        // returns true
+        // changing value for dept for this object and checking again
+        jatin.setDept("Human Resources");
+        // new value returned when .get() is used with same object
+        System.out.println("New value for the object Jatin after modification is : "+empLocation.get(jatin));
+        // returns null because now when the object is called in as a key for the hashmap, the index caluclated is not the same as before
+        // since the dept value for the object was changed it changed the hashcode as well
+        // this points to the fact that if a class is being used as a key to the hashmap, the class has to be made immutable
+        // to make class immutable - we remove all the setter methods and also make all the data members private and final
+
     }
 }
