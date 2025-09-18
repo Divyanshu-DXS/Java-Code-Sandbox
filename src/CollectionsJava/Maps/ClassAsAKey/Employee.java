@@ -1,5 +1,7 @@
 package CollectionsJava.Maps.ClassAsAKey;
 
+import java.util.Objects;
+
 public class Employee {
 
     private String name;
@@ -43,5 +45,20 @@ public class Employee {
                 ", id=" + id +
                 ", dept='" + dept + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id &&
+                Objects.equals(name, employee.name) &&
+                Objects.equals(dept, employee.dept);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id, dept);
     }
 }

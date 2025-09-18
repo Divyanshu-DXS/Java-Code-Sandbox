@@ -23,18 +23,39 @@ public class EmployeeMain {
         empLocation.put(stiby,"Vancouver");
 
         System.out.println(empLocation);
-        // this map currently has a record of objects that we have defined above.
-        // if I was to check if either of the key is equal and if they return the same value when get is used for any given key, lets try that
-        System.out.println(empLocation.get(dev).equals(new Employee("Dev", 1010, "Development")));
-        // this returns false because equals compares object address references unless overwritten
-        // to demonstrate lets print the values we get from these operations..
+
+        System.out.println("********************************");
+//        // this map currently has a record of objects that we have defined above.
+//        // if I was to check if either of the key is equal and if they return the same value when get is used for any given key, lets try that
+//        System.out.println(empLocation.get(dev).equals(empLocation.get(new Employee("Dev", 1010, "Development"))));
+//        // this returns false because equals compares object address references unless overwritten
+
+//        // to demonstrate lets print the values we get from these operations..
+//        System.out.println("Value from obj 'dev' : "+ empLocation.get(dev));
+//        System.out.println("Value from obj 'new Employee(\"Dev\", 1010, \"Development\")' : "+ empLocation.get(new Employee("Dev", 1010, "Development")));
+//        /* Output received :
+//        * Value from obj 'dev' : Waterloo
+//        * Value from obj 'new Employee("Dev", 1010, "Development")' : null
+//        * */
+
+//        // object - new Employee("Dev", 1010, "Development") - returns null, because this object creates a new memory reference and when looked up does not show up in any index, as it calculates a completely different hashcode
+//        System.out.println("HashCode for the 'dev' object: "+dev.hashCode());
+//        System.out.println("HashCode for the 'new' object: "+(new Employee("Dev", 1010, "Development").hashCode()));
+//        /* Output received :
+//        * HashCode for the 'dev' object: 705927765
+//        * HashCode for the 'new' object: 621009875
+//        * */
+
+//        // in order to fix this we would have to overwrite equals and hashcode methods in the Employee class.
+
+        // Trying again post overwriting equals and hashcode method in Employee class
+        System.out.println(empLocation.get(dev).equals(empLocation.get(new Employee("Dev", 1010, "Development"))));
+        // it now returns true as the vales we get from the keys are same
         System.out.println("Value from obj 'dev' : "+ empLocation.get(dev));
         System.out.println("Value from obj 'new Employee(\"Dev\", 1010, \"Development\")' : "+ empLocation.get(new Employee("Dev", 1010, "Development")));
-        // object - new Employee("Dev", 1010, "Development") - returns null, because this objec creates a new memory reference and when looked up does not show up in any index, as it calculates a completely different hashcode
+        // the hashcodes also match
         System.out.println("HashCode for the 'dev' object: "+dev.hashCode());
         System.out.println("HashCode for the 'new' object: "+(new Employee("Dev", 1010, "Development").hashCode()));
-
-        // in order to fix this we would have to overwrite equals and hashcode methods in the Employee class.
 
     }
 }
