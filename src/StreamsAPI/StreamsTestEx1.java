@@ -18,12 +18,17 @@ public class StreamsTestEx1 {
 //        streamOfStrings.forEach(consumer);
 //        // This in result will give us a stream of infinite Strings -"Hello Streams".
 
+        // Using lambdas to shorten and work on this code above
+        Stream.generate(()->"Hello Stream!!").forEach(s-> System.out.println(s));
+
         // the generate function provides us with an infinite stream, we also have a method 'of()' that provides us with a finite stream to work on
 
-        Consumer<Integer> consumer = i -> System.out.println(i);
-        Stream<Integer> streamOfIntegers = Stream.of(1,2,4,5,6,126,613,61,46,84,48,36,8,9464,2,784);
-        streamOfIntegers.forEach(consumer);
+//        Consumer<Integer> consumer = i -> System.out.println(i);
+//        Stream<Integer> streamOfIntegers = Stream.of(1,2,4,5,6,126,613,61,46,84,48,36,8,9464,2,784);
+//        streamOfIntegers.forEach(consumer);
 
+        // lets try to use lambda and then shorten this code above
+        Stream.of(1,2,4,5,6,126,613,61,46,84,48,36,8,9464,2,784).forEach(i -> System.out.println(i));
 
 
 
