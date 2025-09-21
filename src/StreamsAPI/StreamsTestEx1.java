@@ -1,6 +1,8 @@
 package StreamsAPI;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -57,6 +59,30 @@ public class StreamsTestEx1 {
 
         // Using sorted ()
         Stream.of("Krsna", "Divine", "Karma", "Kahlon", "Dino", "Em", "Raftaar").sorted(Comparator.naturalOrder()).forEach(s -> System.out.println(s));
+
+        System.out.println("*******************");
+
+        // Using map
+        // We will use a new collection of numbers and will use map to print respective string representation of them.
+        // for instance 1-"one" 2-"two" 3-"three" , etc.
+
+        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9,10,11,12));
+        numbers.stream().filter(n->n%2==0).map((n)->{
+            System.out.println("Operating on number : "+ n);
+            switch (n){
+                case 1 : return "One";
+                case 2 : return "Two";
+                case 3 : return "Three";
+                case 4 : return "Four";
+                case 5 : return "Five";
+                case 6 : return "Six";
+                case 7 : return "Seven";
+                case 8 : return "Eight";
+                case 9 : return "Nine";
+                case 10 : return "Ten";
+            }
+           return "Number not available";
+        }).forEach(n-> System.out.println(n));
 
 
     }
