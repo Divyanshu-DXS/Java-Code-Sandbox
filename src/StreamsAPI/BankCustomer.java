@@ -5,12 +5,14 @@ public class BankCustomer {
     String accNo;
     double balance;
     int BankCode;
+    int age;
 
-    public BankCustomer(String name, String accNo, double balance, int bankCode) {
+    public BankCustomer(String name, String accNo, double balance, int bankCode, int age) {
         this.name = name;
         this.accNo = accNo;
         this.balance = balance;
         BankCode = bankCode;
+        this.age = age;
     }
 
     public String getName() {
@@ -45,6 +47,14 @@ public class BankCustomer {
         BankCode = bankCode;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "BankCustomer{" +
@@ -52,6 +62,7 @@ public class BankCustomer {
                 ", accNo='" + accNo + '\'' +
                 ", balance=" + balance +
                 ", BankCode=" + BankCode +
+                ", age=" + age +
                 '}';
     }
 }
