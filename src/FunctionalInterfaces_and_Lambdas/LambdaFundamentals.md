@@ -43,4 +43,10 @@ Lambda expressions are similar to methods, but they do not need a name and they 
 4. you dont need parenthesis if the function has a single argument
 5. if you have a single line of code you do not need {} or the return keyword  
 
+## More important points in lambda's context
 
+- Lambdas can not use local variables, but can use instance variables
+- Reason being local variables are allocated in stack memory and lambdas do not operate on stack memories 
+- We can also make use of atomic memory in this case by using an atomic reference
+    - <Code>AtomicReference\<Integer> count = new AtomicReference<>();
+</code>
