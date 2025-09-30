@@ -84,6 +84,10 @@ public class StreamsTestEx1 {
            return "Number not available";
         }).forEach(n-> System.out.println(n));
 
+        // this will go on generating an infinite stream of data, starting from 0(seed)
+        // Iterate method here takes, a seed(initial value), and a unary operator
+        // Unary operator is a special implementation of the 'Function' functional interface that takes an argument of one type and returns same type
+        Stream.iterate(0,n->n+1).forEach(n-> System.out.println(n)); 
 
     }
 }
