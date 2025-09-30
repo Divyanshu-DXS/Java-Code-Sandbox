@@ -124,5 +124,18 @@ public class StreamsTestEx1 {
                 .peek(n-> System.out.println("current Object is : " + n))
                 .forEach(n-> System.out.println(n));
 
+        System.out.println("*******************");
+
+        //sorted() -- stateful function
+        //observe how it will record all the objects first and then they are together released for peek and foreach
+        Stream.of("Dev","Div","Krsna","Dino","Raftaar","Skahlon","Karma","BrodaV","Em","50","Dre")
+                .filter(n->{
+                    System.out.println("Inside filter method .. filtering object : " + n);
+                    return n.length()<6;
+                }) // observer here how filter actually goes through all the streamed data but all of that is not passed on to the next method in pipeline
+                .sorted()
+                .peek(n-> System.out.println("Sorting done .. cuurent object is : "+ n))
+                .forEach(n-> System.out.println(n));
+
     }
 }
