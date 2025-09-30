@@ -84,10 +84,37 @@ public class StreamsTestEx1 {
            return "Number not available";
         }).forEach(n-> System.out.println(n));
 
+        System.out.println("*******************");
+
         // this will go on generating an infinite stream of data, starting from 0(seed)
         // Iterate method here takes, a seed(initial value), and a unary operator
         // Unary operator is a special implementation of the 'Function' functional interface that takes an argument of one type and returns same type
-        Stream.iterate(0,n->n+1).forEach(n-> System.out.println(n)); 
+        // Commenting this out to save infinite operations from running but building up on same, with more methods implementations below
+//        Stream.iterate(0,n->n+1).forEach(n-> System.out.println(n));
+
+        // using takeWhile() of Streams API.
+        // Similar to filter method it also takes a Predicate object, and filters the content.
+        // but takeWhile short-circuits the infinite stream where the condition is met and stops it there.
+        Stream.iterate(0,n->n+1)
+                .takeWhile(n->n<20)
+                .forEach(n-> System.out.println(n));
+        System.out.println("*******************");
+
+        // Comparing filter() and takeWhile()
+        System.out.println("Comparing takeWhile() and the filter()");
+        //takeWhile()
+        System.out.println("Running takeWhile()");
+        Stream.of("Dev","Div","Krsna","Dino","Raftaar","Skahlon","Karma","BrodaV","Em","50","Dre")
+                .takeWhile(n->n.length()<6)
+                .forEach(n-> System.out.println(n));
+
+        System.out.println();
+
+        //filter()
+        System.out.println("Running filter()");
+        Stream.of("Dev","Div","Krsna","Dino","Raftaar","Skahlon","Karma","BrodaV","Em","50","Dre")
+                .filter(n->n.length()<6)
+                .forEach(n-> System.out.println(n));
 
     }
 }
