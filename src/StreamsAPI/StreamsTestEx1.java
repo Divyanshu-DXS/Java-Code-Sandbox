@@ -101,6 +101,7 @@ public class StreamsTestEx1 {
         System.out.println("*******************");
 
         // Comparing filter() and takeWhile()
+        // You can observe here how filter works on all the data in the stream, whereas takeWhile terminates the moment the condition specified in it fails
         System.out.println("Comparing takeWhile() and the filter()");
         //takeWhile()
         System.out.println("Running takeWhile()");
@@ -114,6 +115,13 @@ public class StreamsTestEx1 {
         System.out.println("Running filter()");
         Stream.of("Dev","Div","Krsna","Dino","Raftaar","Skahlon","Karma","BrodaV","Em","50","Dre")
                 .filter(n->n.length()<6)
+                .forEach(n-> System.out.println(n));
+
+        System.out.println("*******************");
+
+        //peek()
+        Stream.of("Dev","Div","Krsna","Dino","Raftaar","Skahlon","Karma","BrodaV","Em","50","Dre")
+                .peek(n-> System.out.println("current Object is : " + n))
                 .forEach(n-> System.out.println(n));
 
     }
