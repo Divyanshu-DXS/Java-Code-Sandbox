@@ -137,5 +137,15 @@ public class StreamsTestEx1 {
                 .peek(n-> System.out.println("Sorting done .. cuurent object is : "+ n))
                 .forEach(n-> System.out.println(n));
 
+        // reduce ()
+        System.out.println("*******************");
+        System.out.println("Working on reduce : ");
+        System.out.println(Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 102, 103, 104, 105, 106, 107, 108, 109)
+                .filter(n -> n % 2 == 0)
+                .reduce(0, (a, b) -> {
+                    System.out.println("a = " + a);
+                    System.out.println("b = " + b);
+                    return a + b;}));
+
     }
 }

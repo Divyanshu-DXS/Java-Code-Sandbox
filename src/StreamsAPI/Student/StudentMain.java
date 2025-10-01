@@ -61,6 +61,11 @@ public class StudentMain {
         System.out.println("*******************");
 
 
+        // lambdas of comparator
+        System.out.println("Working on creating lambdas for the comparator functional interface :");
+        list.sort((m,n)->m.getName().compareTo(n.getName()));
+//        list.sort(Comparator.comparing(Student::getName));
+        System.out.println(list);
 
 
 
