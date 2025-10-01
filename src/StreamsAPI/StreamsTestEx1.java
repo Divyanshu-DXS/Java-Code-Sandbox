@@ -147,5 +147,24 @@ public class StreamsTestEx1 {
                     System.out.println("b = " + b);
                     return a + b;}));
 
+        // flatmap ()
+        // flatmap can help you work if you have a collection of a collection of objects
+        // for this example we would be working on a collection of Employee objects
+        // Employee object further contains a collection of String email address
+        // we will try and access that
+        Employee e1 = new Employee("Adam",1001,new ArrayList<String>(List.of("Adam.a@gmail.com","A.adam@gmail.com","Adam1@gmail.com")));
+        Employee e2 = new Employee("Ben",1002,new ArrayList<String>(List.of("Ben.a@gmail.com","A.ben@gmail.com","Benny@gmail.com")));
+        Employee e3 = new Employee("Brock",1003,new ArrayList<String>(List.of("Brock.a@gmail.com","A.brock@gmail.com","lesnar@gmail.com")));
+        Employee e4 = new Employee("Dev",1004,new ArrayList<String>(List.of("Dev.a@gmail.com","Devendre.adam@gmail.com","Dave@gmail.com")));
+
+        System.out.println("*******************");
+        List<Employee> employeeList = new ArrayList<Employee>(List.of(e1,e2,e3,e4));
+        System.out.println("employee list currently has : " + employeeList);
+        System.out.println("printing only email address from the employee list : ");
+        employeeList.stream()
+                .flatMap(n->n.getEmail().stream()) // this now returns the String objects from the getEmail() of Employee objects
+                .forEach(System.out::println);
+
+
     }
 }
