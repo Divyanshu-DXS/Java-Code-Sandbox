@@ -41,7 +41,7 @@ public class TestingOptional {
         System.out.println(".ofNullable() - " + optOfNullable);
 
         System.out.println("********************");
-        System.out.println("Checking Values present : isEmpty() && isPresent()");
+        System.out.println("Checking Values present : isEmpty() & isPresent()");
         // isPresent() : we can check if there is a value in the optional object or not with the isPresent() method
         System.out.println("case : isPresent ()");
         System.out.println(optEmpty.isPresent()); // returns false
@@ -50,6 +50,43 @@ public class TestingOptional {
         System.out.println("case : isEmpty ()");
         System.out.println(optEmpty.isEmpty()); // returns true
         System.out.println(optOf.isEmpty()); // returns false since it actually holds an object in it
+
+        System.out.println("********************");
+        System.out.println("Conditional Actions with ifPresent() : ");
+        // ifPresent()
+        // ifPresent() take a Consumer object
+        // lets try to pass in a consumer lambda and check how this operates
+        // on the optOf optional where there is an object present in the box
+        optOf.ifPresent(n-> System.out.println(n.length()));
+        // on the optOfnullable where there is null in the box
+        optOfNullable.ifPresent(n-> System.out.println(n.length())); //does not give any output since the object in optional was a null
+
+        System.out.println("********************");
+        System.out.println("Default value with orElse() : ");
+        // orElse() : used to retrieve the value wrapped inside an Optional instance. It takes one parameter, which acts as a default value.
+        // The orElse() method returns the wrapped value if it’s present, and its argument otherwise:
+        String nullValue = null;
+        // In this case this will setup a value for str1 = value stored in nullValue object and if the value in it is null,
+        // it stores the value that is passed as a parameter to the orElse()
+        String str1 = Optional.ofNullable(nullValue).orElse("DXS");
+        System.out.println(str1); // hence returns DXS
+
+        System.out.println("********************");
+        System.out.println("Default value with orElseGet() : ");
+        // orElseGet() :similar to orElse(). However, instead of taking a value to return if the Optional value is not present,
+        // it takes a supplier functional interface, which is invoked and returns the value of the invocation:
+        String str2 = Optional.ofNullable(nullValue).orElseGet(()->"KRSNA");
+        System.out.println(str2);
+
+        System.out.println("********************");
+        System.out.println("Exceptions With orElseThrow()");
+        // Exceptions With orElseThrow()
+        // Following in order of orElseGet() & orElse() this is another apporach to handle null values where it can than throw an exception
+        String str3 = Optional.ofNullable(nullValue).orElseThrow(()->new IllegalArgumentException()); // This one would throw the specified exception
+        String str4 = Optional.ofNullable(nullValue).orElseThrow(); // This one with an empty argument throws no such element exception 
+
+
+
 
     }
 
