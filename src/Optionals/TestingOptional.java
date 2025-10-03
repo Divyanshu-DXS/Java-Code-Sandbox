@@ -83,7 +83,7 @@ public class TestingOptional {
         // Exceptions With orElseThrow()
         // Following in order of orElseGet() & orElse() this is another apporach to handle null values where it can than throw an exception
         String str3 = Optional.ofNullable(nullValue).orElseThrow(()->new IllegalArgumentException()); // This one would throw the specified exception
-        String str4 = Optional.ofNullable(nullValue).orElseThrow(); // This one with an empty argument throws no such element exception 
+        String str4 = Optional.ofNullable(nullValue).orElseThrow(); // This one with an empty argument throws no such element exception
 
 
 
