@@ -5,26 +5,13 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-<!--    <bean id="employee" class="com.dev.dxs.MavenProjectDemo1.Employee">-->
-<!--        <property name="fName" value="Divyanshu"></property>-->
-<!--        <property name="lName" value="Sharma"></property>-->
-<!--    </bean>-->
-<!--    <bean id="employee2" class="com.dev.dxs.MavenProjectDemo1.Employee">-->
-<!--        <property name="fName" value="Dev"></property>-->
-<!--        <property name="lName" value="S"></property>-->
-<!--    </bean>-->
-
-<!--    <bean id="employee3" class="com.dev.dxs.MavenProjectDemo1.Employee">-->
-<!--        <constructor-arg name="fName" value="DXS"></constructor-arg>-->
-<!--        <constructor-arg name="lName" value="XXX"></constructor-arg>-->
-<!--    </bean>-->
+    <bean id="profession" class="com.dev.dxs.MavenProjectDemo1.Profession">
+        <property name="jobRole" value="Sr. Software Architect"></property>
+    </bean>
     <bean id="divyanshu" class="com.dev.dxs.MavenProjectDemo1.Employee">
         <property name="fName" value="Divyanshu"/>
         <property name="lName" value="Sharma"/>
-        <property name="role">
-            <bean name="profession" class="com.dev.dxs.MavenProjectDemo1.Profession">
-                <property name="jobRole" value="Sr. Software Developer"></property>
-            </bean>
+        <property name="role" ref="profession">
         </property>
     </bean>
 
