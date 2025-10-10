@@ -5,14 +5,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.dev.dxs.MavenProjectDemo1")
 public class MavenProjectDemo1Application {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(MavenProjectDemo1Application.class, args);
+		ConfigurableApplicationContext context1 = SpringApplication.run(MavenProjectDemo1Application.class, args);
 
 //		ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
 		// In order to provide and have the init and destroy methods executed in sync with the application we  use configurable Application context
@@ -33,20 +35,24 @@ public class MavenProjectDemo1Application {
 //		System.out.println(DXS);
 //		context.registerShutdownHook(); // ConfigurableApplicationContext provides us with a method to shutdown the context and call the custom method listed.
 
-		ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("com.dev.dxs.MavenProjectDemo1.Config");
+		ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("com.dev.dxs.MavenProjectDemo1.Config","ExternalConfigFolder");
 		Profession getProfessionBean = context.getBean(Profession.class);
 		System.out.println(getProfessionBean.yourProfession("Software architect"));
 		getProfessionBean.setJobRole("Software architect");
-		Employee dev = context.getBean(Employee.class);
-//		dev.setRole(getProfessionBean);
+		Employee dev = context.getBean("getDev",Employee.class);
 		System.out.println(dev);
+		Employee alex = context.getBean("getAlex",Employee.class);
+		System.out.println(alex);
 
+		CompanyData comp1 = context.getBean("getCompany1",CompanyData.class); // attempting AnnotationConfigApplicationContext to pick up multiple files in the listed location
+		System.out.println(comp1);
 
+		// attempting, to use an external file for AnnotationConfigApplicationContext
+		CompanyData comp2 = context.getBean("getCompanyData2",CompanyData.class);
+		System.out.println(comp2);
 
-
-
-
-
+		Student student= context1.getBean(Student.class);
+		student.takeAction();
 
 
 	}
