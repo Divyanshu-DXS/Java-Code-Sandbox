@@ -37,6 +37,14 @@ public class Employee {
         System.out.println("Setting up lastName : " + lName);
     }
 
+    public  void  preBeanCreation(){
+        System.out.println("The creatoins has been initiated .... ");
+    }
+
+    public void postLifecycleClosing(){
+        System.out.println("Closing session and terminating ...");
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
