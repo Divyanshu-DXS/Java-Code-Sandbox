@@ -14,6 +14,19 @@
         <property name="role" ref="profession">
         </property>
     </bean>
+    <bean id="ApexLegends" class="com.dev.dxs.MavenProjectDemo1.Game">
+        <property name="id" value="1012"></property>
+        <property name="name" value="ApexLegends"></property>
+        <property name="productionHouse" value="Respawn"></property>
+        <property name="rank" value="001"></property>
+    </bean>
+<!--    using constructor agruments based by index -->
+    <bean id="Fifa" class="com.dev.dxs.MavenProjectDemo1.Game">
+        <constructor-arg index="0" value="Fifa"></constructor-arg>
+        <constructor-arg index="1" value="EA Sports"></constructor-arg>
+        <constructor-arg index="2" value="2001"></constructor-arg>
+        <constructor-arg index="3" value="1"></constructor-arg>
+    </bean>
 
 
 </beans>

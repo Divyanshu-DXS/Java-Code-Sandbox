@@ -54,6 +54,14 @@ public class MavenProjectDemo1Application {
 		Student student= context1.getBean(Student.class);
 		student.takeAction();
 
+		// making another container with xml based configuration
+
+		ConfigurableApplicationContext context2 = new ClassPathXmlApplicationContext("bean.xml");
+
+		Game apexLegends = context2.getBean("ApexLegends", Game.class);
+		Game fifa = context2.getBean("Fifa",Game.class);
+		System.out.println(apexLegends);
+		System.out.println(fifa);
 
 	}
 
