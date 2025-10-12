@@ -63,6 +63,17 @@ public class MavenProjectDemo1Application {
 		System.out.println(apexLegends);
 		System.out.println(fifa);
 
+		// Autowiring using Car/Vehicle class
+		Vehichle vehichle = context2.getBean("vehichle", Vehichle.class);
+		vehichle.drive(); // intially gave me a null pointer exception since the 'car' bean was defined but not referenced as a property for vehihcle bean
+		// Autowiring was later used to configure to use either of these values below
+		/*
+		* default - default (that resultes in a null pointer excetpoin )
+		* byName - in this case the bean name and the data member reference should match
+		* byType - refers to the ability to set up property by Type of the object in this case 'car' type | If multiple beans of the same type exist, an exception will be thrown unless one is designated as primary.
+		* constructor - uses the arguments passed in the constructor
+		* */
+
 	}
 
 }
