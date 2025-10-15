@@ -1,6 +1,6 @@
 package CodingDojo;
 
-import javax.naming.PartialResultException;
+
 import java.util.Scanner;
 
 public class MaxInArray {
