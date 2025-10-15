@@ -17,6 +17,7 @@ public class MaxInArray {
         System.out.println("Max value in provided array is : "+ maxValue);
         int maxValueRecursion = findMaxRecursion(arr,0);
         System.out.println("Calculating max value using recursion : "+maxValueRecursion);
+        sc.close();
     }
 
     private static int findMax(int[] arr) {
