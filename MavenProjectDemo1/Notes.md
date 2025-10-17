@@ -48,6 +48,23 @@ This management can be configured using various approaches
       - @Controller: Indicates a web layer component (in Spring MVC).
 - Dependency Injection with @Autowired: You use @Autowired to automatically inject dependencies into fields, constructors, or setter methods.
 
+## Dependency Injection 
+
+### @Autowired 
+
+@Autowired is an annotation provided by Spring to automatically inject dependencies into a Spring-managed bean (also known as dependency injection or DI). 
+It tells Spring where and how to inject the required dependency.
+
+Spring supports three types of DI:
+
+- Constructor Injection
+- Setter Injection
+- Field Injection
+
+You can use @Autowired with all of them.
+
+
+
 
 
  
