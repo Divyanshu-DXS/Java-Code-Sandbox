@@ -21,6 +21,7 @@ public class BookController {
     BookController(BookRepository repository){
         this.repository=repository;
     }
+    
     List<Book> listOfBooks = new ArrayList<Book>();
 
 
@@ -45,33 +46,31 @@ public class BookController {
 
     // < ! -- Before adding JPA repository. restructuring pending  -- >
     // Using request body to provide list of books to add
-    @PostMapping("/addBooks")
-    public List<Book> addBookSet(@RequestBody List<Book> book){
-        listOfBooks.addAll(book);
-        return listOfBooks;
-    }
-
-    // using Query parameters
-    @GetMapping("/getByName")
-    public List<Book> getBookByName(@RequestParam String name){
-        return listOfBooks.stream().filter(book -> book.getName().equals(name)).collect(Collectors.toList());
-    }
-
-    // using query parameters
-    @GetMapping("/getByAuthor/{author}")
-    public List<Book> getBookByAuthor(@PathVariable String author){
-        return listOfBooks.stream().filter(book -> book.getAuthor().equalsIgnoreCase(author)).collect(Collectors.toList());
-    }
-
-    // Using request params
-    @DeleteMapping("/deleteABook/{name}")
-    public List<Book> deleteBookByName(@PathVariable String name){
-        listOfBooks.removeAll(listOfBooks.stream().filter(book -> book.getName().equals(name)).collect(Collectors.toList()));
-        System.out.println("Book has been removed ! ");
-        return listOfBooks;
-    }
-
-
+//    @PostMapping("/addBooks")
+//    public List<Book> addBookSet(@RequestBody List<Book> book){
+//        listOfBooks.addAll(book);
+//        return listOfBooks;
+//    }
+//
+//    // using Query parameters
+//    @GetMapping("/getByName")
+//    public List<Book> getBookByName(@RequestParam String name){
+//        return listOfBooks.stream().filter(book -> book.getName().equals(name)).collect(Collectors.toList());
+//    }
+//
+//    // using query parameters
+//    @GetMapping("/getByAuthor/{author}")
+//    public List<Book> getBookByAuthor(@PathVariable String author){
+//        return listOfBooks.stream().filter(book -> book.getAuthor().equalsIgnoreCase(author)).collect(Collectors.toList());
+//    }
+//
+//    // Using request params
+//    @DeleteMapping("/deleteABook/{name}")
+//    public List<Book> deleteBookByName(@PathVariable String name){
+//        listOfBooks.removeAll(listOfBooks.stream().filter(book -> book.getName().equals(name)).collect(Collectors.toList()));
+//        System.out.println("Book has been removed ! ");
+//        return listOfBooks;
+//    }
 
 
 }
