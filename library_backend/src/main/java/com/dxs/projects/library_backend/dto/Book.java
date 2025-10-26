@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Primary;
 @Builder
 @Entity
 public class Book {
-    @Id @GeneratedValue private Long id;
+    @Id @GeneratedValue private int id;
     String name ;
     String author;
     String production;
@@ -27,7 +27,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String name, String author, String production, String version) {
+    public Book(int id, String name, String author, String production, String version) {
         this.id = id;
         this.name = name;
         this.author = author;

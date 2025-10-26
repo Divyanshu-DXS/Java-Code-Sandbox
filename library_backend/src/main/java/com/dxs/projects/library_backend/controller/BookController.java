@@ -1,47 +1,62 @@
 package com.dxs.projects.library_backend.controller;
 
-import com.dxs.projects.library_backend.BookRepository;
+import com.dxs.projects.library_backend.repository.BookRepository;
 import com.dxs.projects.library_backend.dto.Book;
-import org.springframework.stereotype.Controller;
+import com.dxs.projects.library_backend.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 // Delete mapping was not working so attempting to swithc to rest controller instead
 //@Controller
 //@ResponseBody
 //@RequestMapping("/book")
 @RestController
-//@RequestMapping("/book")
+@RequestMapping("/book")
 public class BookController {
 
-    BookRepository repository;
-    BookController(BookRepository repository){
-        this.repository=repository;
-    }
-    
-    List<Book> listOfBooks = new ArrayList<Book>();
 
 
-    @GetMapping("/getBooks")
+//    BookRepository repository;
+//    BookController(BookRepository repository){
+//        this.repository=repository;
+//    }
+//
+//    List<Book> listOfBooks = new ArrayList<Book>();
+//
+//
+//    @GetMapping("/getBooks")
+//    public List<Book> getAllBooks(){
+//        return repository.findAll();
+////        return listOfBooks;
+//    }
+//
+//    @PostMapping("/addNewBook")
+//    public List<Book> addNewBook(@RequestBody Book book){
+//        repository.save(book);
+//        return repository.findAll();
+//    }
+//
+//    @GetMapping("/searchByAuthor/{author}")
+//    public List<Book> getByAuthor(@PathVariable String author){
+//        return repository.findByAuthor(author);
+//
+//    }
+
+    // *****************
+
+    // Configuring JDBC to communicate between database and controllers
+    @Autowired
+    BookService bookService;
+
+    @GetMapping("/getAllBooks")
     public List<Book> getAllBooks(){
-        return repository.findAll();
-//        return listOfBooks;
+       return bookService.getAllBooks();
     }
 
-    @PostMapping("/addNewBook")
-    public List<Book> addNewBook(@RequestBody Book book){
-        repository.save(book);
-        return repository.findAll();
-    }
-
-    @GetMapping("/searchByAuthor/{author}")
-    public List<Book> getByAuthor(@PathVariable String author){
-        return repository.findByAuthor(author);
-
-    }
+    // *****************
 
 
     // < ! -- Before adding JPA repository. restructuring pending  -- >
