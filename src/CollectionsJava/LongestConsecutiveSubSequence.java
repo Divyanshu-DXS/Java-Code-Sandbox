@@ -53,6 +53,7 @@ public class LongestConsecutiveSubSequence {
                         }
                     }
                 }
+                // one more conditional check is needed in case if all the array is a continuous sub sequence.
                 if(ctr>=counter){
                     counter=ctr+1; }
 
