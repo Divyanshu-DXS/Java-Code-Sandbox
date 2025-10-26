@@ -16,6 +16,12 @@ public class ReversingAnArray {
         System.out.println("Using 2 Pointer Approach ... "+ Arrays.toString(arr2));
         System.out.println("***************** \n");
 
+        int[] arr3 = {1,2,3,4,5,6};
+        reverseArraySwapElements(arr3);
+        System.out.println("Using Swapping Elements Approach ... "+ Arrays.toString(arr3));
+        System.out.println("***************** \n");
+
+
             }
     // Naive approach     
     private static int[] reverseArrayNaiveApproach(int[] arr) {
@@ -48,6 +54,19 @@ public class ReversingAnArray {
 
             left++;
             right--;
+        }
+
+        return arr;
+    }
+
+    // swapping elements 
+    public static int[] reverseArraySwapElements(int[] arr) {
+        int n = arr.length;
+
+        for (int i =0 ; i < n/2 ; i++){
+            int temp = arr[i];
+            arr[i] = arr[n-1-i];
+            arr[n-1-i] = temp;
         }
 
         return arr;
