@@ -10,17 +10,19 @@ public class ReversingAnArray {
         reverseArrayNaiveApproach(arr1);
         System.out.println("Using Naive Approach ... "+Arrays.toString(arr1));
         System.out.println("***************** \n");
-        
+        // 2 Pointer Approach
         int[] arr2 = {1,2,3,4,5,6};
         reverseArray2PointerApproach(arr2);
         System.out.println("Using 2 Pointer Approach ... "+ Arrays.toString(arr2));
         System.out.println("***************** \n");
-
+        // Swapping Elements Approach 
         int[] arr3 = {1,2,3,4,5,6};
         reverseArraySwapElements(arr3);
         System.out.println("Using Swapping Elements Approach ... "+ Arrays.toString(arr3));
         System.out.println("***************** \n");
 
+        // In addition to these approaches above there are in built methods available within the ArrayList collection
+        // Those can also be used to achieve the same result
 
             }
     // Naive approach     
@@ -61,6 +63,8 @@ public class ReversingAnArray {
 
     // swapping elements 
     public static int[] reverseArraySwapElements(int[] arr) {
+        // We just swap the elements from the 2 positions. 
+        // Similar to the 2 pointer approach 
         int n = arr.length;
 
         for (int i =0 ; i < n/2 ; i++){
