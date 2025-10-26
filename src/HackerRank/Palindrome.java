@@ -19,6 +19,30 @@ public class Palindrome {
         else
         System.out.println("No");
 
+        System.out.println("**************\n");
+        System.out.println("Implementing 2 Pointer approach : ");
+        System.out.println("is the given string <"+ A+"> a palindrome > " + checkPalindrome(A));
         sc.close();
-    }
+        
+
+            }
+        
+            private static boolean checkPalindrome(String s) {
+
+                s=s.toLowerCase(); // making it case insesitive 
+                int left =0;
+                int right = s.length()-1;
+                boolean result=true;
+
+                while(left<right){
+                    if(s.charAt(left)!=s.charAt(right)){
+                        result=false;
+                        break;
+                    }
+
+                    left++;
+                    right--;
+                }
+               return result;
+            }
 }
