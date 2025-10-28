@@ -57,6 +57,20 @@ public class BookController {
     }
 
 
+    @GetMapping("/getBookById/{id}")
+    public Book getBookById(@PathVariable int id){
+        return bookService.getBookById(id);
+    }
+
+    @GetMapping("/getBookByAuthor/{author}")
+    public List<Book> getBookByAuthor(@PathVariable String author){
+        return bookService.getBookByAuthor(author);
+    }
+
+    @PostMapping("/addBook")
+    public void addBook(@RequestBody Book book){
+        bookService.addBook(book);
+    }
 
     // *****************
 

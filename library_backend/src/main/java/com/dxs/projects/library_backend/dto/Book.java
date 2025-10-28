@@ -11,18 +11,18 @@ import org.springframework.context.annotation.Primary;
 @Builder
 @Entity
 public class Book {
-    @Id @GeneratedValue private int id;
+    @Id private int id;
     String name ;
     String author;
     String production;
     String version;
 
-    public Book(String name, String author, String production, String version) {
-        this.name = name;
-        this.author = author;
-        this.production = production;
-        this.version = version;
-    }
+//    public Book(String name, String author, String production, String version) {
+//        this.name = name;
+//        this.author = author;
+//        this.production = production;
+//        this.version = version;
+//    }
 
     public Book() {
     }

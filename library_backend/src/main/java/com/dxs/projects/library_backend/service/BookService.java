@@ -15,4 +15,16 @@ public class BookService {
     public List<Book> getAllBooks(){
         return bookRepoJDBC.getAllBooks();
     }
+
+    public Book getBookById(int id) {
+        return bookRepoJDBC.getBookById(id);
+    }
+
+    public List<Book> getBookByAuthor(String author) {
+        return bookRepoJDBC.getBookByAuthor(author);
+    }
+
+    public void addBook(Book book){
+        bookRepoJDBC.addBook(book);
+    }
 }
