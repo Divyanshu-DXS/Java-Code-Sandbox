@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Primary;
 
 @Data
 @Builder
-@Entity
-public class Book {
+public class BookDTO {
     @Id private int id;
     String name ;
     String author;
@@ -24,10 +23,10 @@ public class Book {
 //        this.version = version;
 //    }
 
-    public Book() {
+    public BookDTO() {
     }
 
-    public Book(int id, String name, String author, String production, String version) {
+    public BookDTO(int id, String name, String author, String production, String version) {
         this.id = id;
         this.name = name;
         this.author = author;

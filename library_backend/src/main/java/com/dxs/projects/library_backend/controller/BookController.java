@@ -1,12 +1,11 @@
 package com.dxs.projects.library_backend.controller;
 
-import com.dxs.projects.library_backend.repository.BookRepository;
-import com.dxs.projects.library_backend.dto.Book;
+import com.dxs.projects.library_backend.dto.BookDTO;
+import com.dxs.projects.library_backend.entities.Book;
 import com.dxs.projects.library_backend.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // Delete mapping was not working so attempting to swithc to rest controller instead
@@ -17,7 +16,24 @@ import java.util.List;
 @RequestMapping("/book")
 public class BookController {
 
+    @Autowired
+    BookService bookService;
 
+    // *****************
+    // USING JPA -- Using JPA Repository methods here to link with service and controller class
+
+    @GetMapping("/getAllBooks")
+    public List<Book> getAllBooks(){
+        return bookService.getAllBooks();
+    }
+
+    @PostMapping("/addBook")
+    public void addBook(@RequestBody Book book){
+        bookService.addBook(book);
+    }
+
+
+    // *****************
 
 //    BookRepository repository;
 //    BookController(BookRepository repository){
@@ -48,29 +64,28 @@ public class BookController {
     // *****************
 
     // Configuring JDBC to communicate between database and controllers
-    @Autowired
-    BookService bookService;
-
-    @GetMapping("/getAllBooks")
-    public List<Book> getAllBooks(){
-       return bookService.getAllBooks();
-    }
 
 
-    @GetMapping("/getBookById/{id}")
-    public Book getBookById(@PathVariable int id){
-        return bookService.getBookById(id);
-    }
-
-    @GetMapping("/getBookByAuthor/{author}")
-    public List<Book> getBookByAuthor(@PathVariable String author){
-        return bookService.getBookByAuthor(author);
-    }
-
-    @PostMapping("/addBook")
-    public void addBook(@RequestBody Book book){
-        bookService.addBook(book);
-    }
+//    @GetMapping("/getAllBooks")
+//    public List<BookDTO> getAllBooks(){
+//       return bookService.getAllBooks();
+//    }
+//
+//
+//    @GetMapping("/getBookById/{id}")
+//    public BookDTO getBookById(@PathVariable int id){
+//        return bookService.getBookById(id);
+//    }
+//
+//    @GetMapping("/getBookByAuthor/{author}")
+//    public List<BookDTO> getBookByAuthor(@PathVariable String author){
+//        return bookService.getBookByAuthor(author);
+//    }
+//
+//    @PostMapping("/addBook")
+//    public void addBook(@RequestBody BookDTO bookDTO){
+//        bookService.addBook(bookDTO);
+//    }
 
     // *****************
 

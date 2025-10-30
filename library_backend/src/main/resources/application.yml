@@ -2,15 +2,17 @@ spring:
   application:
     name: library_backend
   datasource:
-    url: jdbc:h2:mem:Mydatabase
+    url: jdbc:h2:./Mydatabase
     username: admin
     password: admin123
-  sql:
-    init:
-      mode: always
+#  sql:
+#    init:
+#      mode: always
   jpa:
+    generate-ddl: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
+    show-sql: true
 
   h2:
     console:

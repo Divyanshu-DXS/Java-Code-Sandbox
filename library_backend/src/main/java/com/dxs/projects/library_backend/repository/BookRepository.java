@@ -1,10 +1,11 @@
 package com.dxs.projects.library_backend.repository;
 
-import com.dxs.projects.library_backend.dto.Book;
+import com.dxs.projects.library_backend.dto.BookDTO;
+import com.dxs.projects.library_backend.entities.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book,Long> {
-    List<Book> findByAuthor(String author);
+    List<BookDTO> findByAuthor(String author);
 }
