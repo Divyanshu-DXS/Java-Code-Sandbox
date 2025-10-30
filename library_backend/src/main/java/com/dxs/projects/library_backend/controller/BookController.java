@@ -52,6 +52,17 @@ public class BookController {
     public List<Book> getByProduction(@PathVariable String production){
         return bookService.findByProduction(production);
     }
+    // Updating a Book's version by name
+    @PostMapping("/updateBookVersion/{name}/{version}")
+    public Book updateVersionByName(@PathVariable String name, @PathVariable String version){
+        bookService.updateABookVersionByName(name,version);
+        return bookService.getByName(name);
+    }
+    // Deleting a book by name
+    @DeleteMapping("/deleteBook")
+    public void deleteBook(@RequestBody Book book){
+        bookService.deleteBook(book);
+    }
     // *****************
 
 //    BookRepository repository;

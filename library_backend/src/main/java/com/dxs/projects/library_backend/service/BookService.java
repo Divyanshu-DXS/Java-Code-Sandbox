@@ -58,7 +58,13 @@ public class BookService {
         return bookRepository.findByProduction(production);
     }
     // Update a book version
-
-    // Delete a book entry
+    public Book updateABookVersionByName(String name, String version){
+        bookRepository.findByName(name).setVersion(version);
+        return bookRepository.findByName(name);
+    }
+    // Delete a book entry by name
+    public void deleteBook(Book book){
+        bookRepository.delete(book);
+    }
 
 }
