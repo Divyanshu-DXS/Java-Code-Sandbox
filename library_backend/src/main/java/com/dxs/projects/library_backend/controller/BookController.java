@@ -37,7 +37,21 @@ public class BookController {
     public List<Book> addListOfBooks( @RequestBody List<Book> books){
         return bookService.addBookList(books);
     }
-
+    // Finding a book by name
+    @GetMapping("/getBookByName/{name}")
+    public Book getBookByName(@PathVariable String name){
+        return bookService.getByName(name);
+    }
+    // Finding list of all books by an author
+    @GetMapping("/getBookByAuthor/{author}")
+    public List<Book> getByAuthor(@PathVariable String author){
+        return bookService.findByAuthor(author);
+    }
+    // Finding List of all the books by a production house
+    @GetMapping("/getBookByProduction/{production}")
+    public List<Book> getByProduction(@PathVariable String production){
+        return bookService.findByProduction(production);
+    }
     // *****************
 
 //    BookRepository repository;

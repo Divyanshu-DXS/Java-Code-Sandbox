@@ -42,15 +42,21 @@ public class BookService {
     }
     // Add a list of books
     public List<Book> addBookList(List<Book> books){
-        return bookRepository.saveAll(books);
+        bookRepository.saveAll(books);
+        return getAllBooks();
     }
-
     // Find a book by name
-
+    public Book getByName(String name){
+        return bookRepository.findByName(name);
+    }
     // List all books by an author
-
+    public List<Book> findByAuthor(String author){
+        return bookRepository.findByAuthor(author);
+    }
     // List all books by production
-
+    public List<Book> findByProduction(String production){
+        return bookRepository.findByProduction(production);
+    }
     // Update a book version
 
     // Delete a book entry
