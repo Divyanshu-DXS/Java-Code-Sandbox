@@ -22,16 +22,21 @@ public class BookController {
     // *****************
     // USING JPA -- Using JPA Repository methods here to link with service and controller class
 
+    // endpoint to get all books in the database
     @GetMapping("/getAllBooks")
     public List<Book> getAllBooks(){
         return bookService.getAllBooks();
     }
-
+    // Adding a single book entry
     @PostMapping("/addBook")
     public void addBook(@RequestBody Book book){
         bookService.addBook(book);
     }
-
+    // Adding list of books to the database
+    @PostMapping("/addBooks")
+    public List<Book> addListOfBooks( @RequestBody List<Book> books){
+        return bookService.addBookList(books);
+    }
 
     // *****************
 

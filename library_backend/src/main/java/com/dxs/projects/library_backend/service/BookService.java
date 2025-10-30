@@ -32,11 +32,27 @@ public class BookService {
 //    }
 
     // Using JPA from here On ...
+    // Get list of all the books in the database
     public List<Book> getAllBooks(){
         return bookRepository.findAll();
     }
-
+    // Add a single book entry
     public void addBook(Book book){
         bookRepository.save(book);
     }
+    // Add a list of books
+    public List<Book> addBookList(List<Book> books){
+        return bookRepository.saveAll(books);
+    }
+
+    // Find a book by name
+
+    // List all books by an author
+
+    // List all books by production
+
+    // Update a book version
+
+    // Delete a book entry
+
 }
