@@ -1,5 +1,6 @@
 package com.dxs.projects.library_backend.controller;
 
+import com.dxs.projects.library_backend.dto.BookCreateDTO;
 import com.dxs.projects.library_backend.dto.BookResponseDTO;
 import com.dxs.projects.library_backend.entities.Book;
 import com.dxs.projects.library_backend.service.BookService;
@@ -19,50 +20,71 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    // *****************
-    // USING JPA -- Using JPA Repository methods here to link with service and controller class
+    // Post DTO <-> Entity mapping
+    // Now the endpoints do not expose the entity directly and only expose the dto object
+    // the dto object is then converted into entity when needed
 
-    // endpoint to get all books in the database
+    // Get all Books mapping
     @GetMapping("/getAllBooks")
     public List<BookResponseDTO> getAllBooks(){
         return bookService.getAllBooks();
     }
-    // Adding a single book entry
+    // Add a Book
     @PostMapping("/addBook")
-    public void addBook(@RequestBody Book book){
-        bookService.addBook(book);
+    public List<BookResponseDTO> addABook(@RequestBody BookCreateDTO bookCreateDTO){
+        if(bookCreateDTO == null) return null;
+        return bookService.addABook(bookCreateDTO);
     }
-    // Adding list of books to the database
+    // Adding a list of books
     @PostMapping("/addBooks")
-//    public List<Book> addListOfBooks( @RequestBody List<Book> books){
-//        return bookService.addBookList(books);
+    public List<BookResponseDTO> addBookList(@RequestBody List<BookCreateDTO> bookCreateDTOS){
+        return bookService.addBookList(bookCreateDTOS);
+    }
+
+    // *****************
+    // USING JPA -- Using JPA Repository methods here to link with service and controller class
+
+    // endpoint to get all books in the database
+//    @GetMapping("/getAllBooks")
+//    public List<BookResponseDTO> getAllBooks(){
+//        return bookService.getAllBooks();
 //    }
-    // Finding a book by name
-    @GetMapping("/getBookByName/{name}")
-    public Book getBookByName(@PathVariable String name){
-        return bookService.getByName(name);
-    }
-    // Finding list of all books by an author
-    @GetMapping("/getBookByAuthor/{author}")
-    public List<Book> getByAuthor(@PathVariable String author){
-        return bookService.findByAuthor(author);
-    }
-    // Finding List of all the books by a production house
-    @GetMapping("/getBookByProduction/{production}")
-    public List<Book> getByProduction(@PathVariable String production){
-        return bookService.findByProduction(production);
-    }
-    // Updating a Book's version by name
-    @PostMapping("/updateBookVersion/{name}/{version}")
-    public Book updateVersionByName(@PathVariable String name, @PathVariable String version){
-        bookService.updateABookVersionByName(name,version);
-        return bookService.getByName(name);
-    }
-    // Deleting a book by name
-    @DeleteMapping("/deleteBook")
-    public void deleteBook(@RequestBody Book book){
-        bookService.deleteBook(book);
-    }
+//    // Adding a single book entry
+//    @PostMapping("/addBook")
+//    public void addBook(@RequestBody Book book){
+//        bookService.addBook(book);
+//    }
+//    // Adding list of books to the database
+//    @PostMapping("/addBooks")
+////    public List<Book> addListOfBooks( @RequestBody List<Book> books){
+////        return bookService.addBookList(books);
+////    }
+//    // Finding a book by name
+//    @GetMapping("/getBookByName/{name}")
+//    public Book getBookByName(@PathVariable String name){
+//        return bookService.getByName(name);
+//    }
+//    // Finding list of all books by an author
+//    @GetMapping("/getBookByAuthor/{author}")
+//    public List<Book> getByAuthor(@PathVariable String author){
+//        return bookService.findByAuthor(author);
+//    }
+//    // Finding List of all the books by a production house
+//    @GetMapping("/getBookByProduction/{production}")
+//    public List<Book> getByProduction(@PathVariable String production){
+//        return bookService.findByProduction(production);
+//    }
+//    // Updating a Book's version by name
+//    @PostMapping("/updateBookVersion/{name}/{version}")
+//    public Book updateVersionByName(@PathVariable String name, @PathVariable String version){
+//        bookService.updateABookVersionByName(name,version);
+//        return bookService.getByName(name);
+//    }
+//    // Deleting a book by name
+//    @DeleteMapping("/deleteBook")
+//    public void deleteBook(@RequestBody Book book){
+//        bookService.deleteBook(book);
+//    }
     // *****************
 
 //    BookRepository repository;
