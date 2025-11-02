@@ -43,6 +43,19 @@ public class BookService {
         return bookRepository.findAll().stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());
     }
 
+    // Finding a book by an ID
+    public BookResponseDTO getBookByID(int id){
+        Book book = bookRepository.findById(id);
+        return BookMapper.toResponseDTO(book);
+    }
+
+    // Modify a version of a Book by Name
+    public BookResponseDTO updateVersion(String name, String version){
+        Book book = bookRepository.findByName(name);
+        book.setVersion(version);
+        return BookMapper.toResponseDTO(bookRepository.save(book));
+    }
+
 //      ****************** Without using dto and entity mapping below ******************
 //    public List<BookResponseDTO> getAllBooks(){
 //        return bookRepoJDBC.getAllBooks();

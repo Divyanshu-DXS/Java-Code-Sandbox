@@ -40,6 +40,16 @@ public class BookController {
     public List<BookResponseDTO> addBookList(@RequestBody List<BookCreateDTO> bookCreateDTOS){
         return bookService.addBookList(bookCreateDTOS);
     }
+    // Finding Book By Id
+    @GetMapping("/getById/{id}")
+    public BookResponseDTO findByID(@PathVariable int id){
+        return bookService.getBookByID(id);
+    }
+    // Updating version of an existing book by finding it by name
+    @PatchMapping("/{name}/updateVersion/{version}")
+    public BookResponseDTO updateVersionByName(@PathVariable String name, @PathVariable String version){
+        return bookService.updateVersion(name,version);
+    }
 
     // *****************
     // USING JPA -- Using JPA Repository methods here to link with service and controller class
