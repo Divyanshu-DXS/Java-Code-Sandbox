@@ -1,6 +1,6 @@
 package com.dxs.projects.library_backend.controller;
 
-import com.dxs.projects.library_backend.dto.BookDTO;
+import com.dxs.projects.library_backend.dto.BookResponseDTO;
 import com.dxs.projects.library_backend.entities.Book;
 import com.dxs.projects.library_backend.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class BookController {
 
     // endpoint to get all books in the database
     @GetMapping("/getAllBooks")
-    public List<Book> getAllBooks(){
+    public List<BookResponseDTO> getAllBooks(){
         return bookService.getAllBooks();
     }
     // Adding a single book entry
@@ -34,9 +34,9 @@ public class BookController {
     }
     // Adding list of books to the database
     @PostMapping("/addBooks")
-    public List<Book> addListOfBooks( @RequestBody List<Book> books){
-        return bookService.addBookList(books);
-    }
+//    public List<Book> addListOfBooks( @RequestBody List<Book> books){
+//        return bookService.addBookList(books);
+//    }
     // Finding a book by name
     @GetMapping("/getBookByName/{name}")
     public Book getBookByName(@PathVariable String name){
@@ -97,23 +97,23 @@ public class BookController {
 
 
 //    @GetMapping("/getAllBooks")
-//    public List<BookDTO> getAllBooks(){
+//    public List<BookResponseDTO> getAllBooks(){
 //       return bookService.getAllBooks();
 //    }
 //
 //
 //    @GetMapping("/getBookById/{id}")
-//    public BookDTO getBookById(@PathVariable int id){
+//    public BookResponseDTO getBookById(@PathVariable int id){
 //        return bookService.getBookById(id);
 //    }
 //
 //    @GetMapping("/getBookByAuthor/{author}")
-//    public List<BookDTO> getBookByAuthor(@PathVariable String author){
+//    public List<BookResponseDTO> getBookByAuthor(@PathVariable String author){
 //        return bookService.getBookByAuthor(author);
 //    }
 //
 //    @PostMapping("/addBook")
-//    public void addBook(@RequestBody BookDTO bookDTO){
+//    public void addBook(@RequestBody BookResponseDTO bookDTO){
 //        bookService.addBook(bookDTO);
 //    }
 

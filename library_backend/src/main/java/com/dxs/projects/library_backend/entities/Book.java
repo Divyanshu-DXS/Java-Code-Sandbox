@@ -8,6 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Data
+@Builder
 @Table(name = "BOOK_DATABASE")
 public class Book {
     @Id
@@ -22,7 +23,14 @@ public class Book {
     @Column
     String version;
 
-    public Book() {
+    public Book() { }
+
+    public Book(int id, String name, String author, String production, String version) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.production = production;
+        this.version = version;
     }
 
     @Override

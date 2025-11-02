@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Primary;
 
 @Data
 @Builder
-public class BookDTO {
+public class BookResponseDTO {
     @Id private int id;
     String name ;
     String author;
@@ -23,10 +23,10 @@ public class BookDTO {
 //        this.version = version;
 //    }
 
-    public BookDTO() {
+    public BookResponseDTO() {
     }
 
-    public BookDTO(int id, String name, String author, String production, String version) {
+    public BookResponseDTO(int id, String name, String author, String production, String version) {
         this.id = id;
         this.name = name;
         this.author = author;
