@@ -15,6 +15,7 @@ public class BookMapper {
                 .author(dto.getAuthor())
                 .production(dto.getProduction())
                 .version(dto.getVersion())
+                .rating(dto.getRating())
                 .build();
     }
 
@@ -27,6 +28,7 @@ public class BookMapper {
                 .author(entity.getAuthor())
                 .production(entity.getProduction())
                 .version(entity.getVersion())
+                .rating(entity.getRating())
                 .build();
     }
 }

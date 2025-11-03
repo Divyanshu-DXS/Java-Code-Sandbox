@@ -6,6 +6,7 @@ import com.dxs.projects.library_backend.entities.Book;
 //import com.dxs.projects.library_backend.repository.BookRepoJDBC;
 import com.dxs.projects.library_backend.mapper.BookMapper;
 import com.dxs.projects.library_backend.repository.BookRepository;
+import com.dxs.projects.library_backend.repository.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public class BookService {
     @Autowired
 //    BookRepoJDBC bookRepoJDBC;
     BookRepository bookRepository;
+    @Autowired
+    RatingRepository ratingRepository;
 
     // Post DTO Entity Mapping with converter redefining services below
 
@@ -29,6 +32,7 @@ public class BookService {
     // Add a book
     public List<BookResponseDTO> addABook(BookCreateDTO bookCreateDTO){
         Book entity = BookMapper.toEntity(bookCreateDTO);
+        ratingRepository.save(entity.getRating());
         Book saved = bookRepository.save(entity);
         return bookRepository.findAll().stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());
     }
@@ -38,6 +42,7 @@ public class BookService {
         List<Book> books = new ArrayList<>();
         for (BookCreateDTO bookCreateDTO : bookCreateDTOS) {
             books.add(BookMapper.toEntity(bookCreateDTO));
+            ratingRepository.save(bookCreateDTO.getRating());
         }
         bookRepository.saveAll(books);
         return bookRepository.findAll().stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());

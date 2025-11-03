@@ -22,15 +22,26 @@ public class Book {
     String production;
     @Column
     String version;
+    @OneToOne
+    Rating rating;
 
     public Book() { }
 
-    public Book(int id, String name, String author, String production, String version) {
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
+    }
+
+    public Book(int id, String name, String author, String production, String version, Rating rating) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.production = production;
         this.version = version;
+        this.rating=rating;
     }
 
     @Override
@@ -41,6 +52,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", production='" + production + '\'' +
                 ", version='" + version + '\'' +
+                ", rating='" + rating + '\'' +
                 '}';
     }
 }
