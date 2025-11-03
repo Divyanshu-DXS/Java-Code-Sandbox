@@ -56,6 +56,16 @@ public class BookService {
         return BookMapper.toResponseDTO(bookRepository.save(book));
     }
 
+    // Getting List of books by author-name using HQL(Hibernate Query Language)
+    public List<BookResponseDTO> getBooksByAuthorHQL(String author){
+        List<Book> books = bookRepository.gatherListByAuthor(author);
+        List<BookResponseDTO> bookResponseDTOS = new ArrayList<>();
+        for (Book b : books) {
+            bookResponseDTOS.add(BookMapper.toResponseDTO(b));
+        }
+        return bookResponseDTOS;
+    }
+
 //      ****************** Without using dto and entity mapping below ******************
 //    public List<BookResponseDTO> getAllBooks(){
 //        return bookRepoJDBC.getAllBooks();

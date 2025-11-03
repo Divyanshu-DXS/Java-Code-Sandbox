@@ -50,6 +50,11 @@ public class BookController {
     public BookResponseDTO updateVersionByName(@PathVariable String name, @PathVariable String version){
         return bookService.updateVersion(name,version);
     }
+    // Getting List of Books filtered by author name. Using HQL for that
+    @GetMapping("/booksByAuthorHQL/{author}")
+    public List<BookResponseDTO> getBooksByAuthorName(@PathVariable String author){
+        return bookService.getBooksByAuthorHQL(author);
+    }
 
     // *****************
     // USING JPA -- Using JPA Repository methods here to link with service and controller class
