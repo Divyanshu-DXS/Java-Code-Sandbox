@@ -59,6 +59,10 @@ Java’s multithreading capabilities are part of the java.lang package, making i
 - Blocked/Waiting   : A thread is in this state when it is waiting for a resource or for another thread to perform an action.
 - Terminated    : A thread is in this state when it has finished executing.
 
+### Thread Priorities 
+
+Java assigns priority to its threads, that can decide or conclude the running order when compared to other threads. These priorities are set in integer values. This can decide the running order and when execution needs to be switched from one thread to another .... this is called <U>CONTEXT SWITCHING.</U>
+
 ### Thread Methods
 - start( ): Begins the execution of the thread. The Java Virtual Machine (JVM) calls the run() method of the thread.
 - run( ): The entry point for the thread. When the thread is started, the run() method is invoked. If the thread was created using a class that implements Runnable, the run() method will execute the run() method of that Runnable object.
@@ -68,4 +72,10 @@ Java’s multithreading capabilities are part of the java.lang package, making i
 - interrupt(): Interrupts the thread. If the thread is blocked in a call to wait(), sleep(), or join(), it will throw an InterruptedException.
 - yield(): Thread.yield() is a static method that suggests the current thread temporarily pause its execution to allow other threads of the same or higher priority to execute. It’s important to note that yield() is just a hint to the thread scheduler, and the actual behavior may vary depending on the JVM and OS.
 - Thread.setDaemon(boolean): Marks the thread as either a daemon thread or a user thread. When the JVM exits, all daemon threads are terminated.
+
+### Synchronization 
+
+Synchronization is also important. in many cases if multiple threads are accessing and shared resource at the same time, if the value of the respource is being modified, it can cuase concurrent issues and the value returned would not be consisted with the expectatoins. Since multiple threads will be modifying the same resource multiple times on thier end. 
+In that case we can always wrap that method with a synchronization keyword that can make sure that whenever that method is being accessed by a thread, it only allows one thread at a time to execute it.. this can help maintain the concurrency and does not lead to discrepancy.
+But.... this can also lead us into a challenege where if a single resource takes a lot of time, and respurces the other threads are held back from theier executoins, that can weigh heavy on the applicatoins performacnce and resourcefullness. 
 
