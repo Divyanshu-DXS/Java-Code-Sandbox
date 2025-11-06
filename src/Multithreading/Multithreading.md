@@ -59,3 +59,13 @@ Java’s multithreading capabilities are part of the java.lang package, making i
 - Blocked/Waiting   : A thread is in this state when it is waiting for a resource or for another thread to perform an action.
 - Terminated    : A thread is in this state when it has finished executing.
 
+### Thread Methods
+- start( ): Begins the execution of the thread. The Java Virtual Machine (JVM) calls the run() method of the thread.
+- run( ): The entry point for the thread. When the thread is started, the run() method is invoked. If the thread was created using a class that implements Runnable, the run() method will execute the run() method of that Runnable object.
+- sleep(long milliseconds): Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds.
+- join( ): Waits for this thread to die. When one thread calls the join() method of another thread, it pauses the execution of the current thread until the thread being joined has completed its execution.
+- setPriority(int newPriority): Changes the priority of the thread. The priority is a value between Thread.MIN_PRIORITY (1) and Thread.MAX_PRIORITY (10).
+- interrupt(): Interrupts the thread. If the thread is blocked in a call to wait(), sleep(), or join(), it will throw an InterruptedException.
+- yield(): Thread.yield() is a static method that suggests the current thread temporarily pause its execution to allow other threads of the same or higher priority to execute. It’s important to note that yield() is just a hint to the thread scheduler, and the actual behavior may vary depending on the JVM and OS.
+- Thread.setDaemon(boolean): Marks the thread as either a daemon thread or a user thread. When the JVM exits, all daemon threads are terminated.
+
