@@ -70,6 +70,13 @@ public class BookController {
         return bookService.findByAuthorLike(name);
     }
 
+    // Delete mapping to delete a book by id
+    @DeleteMapping("/DeleteaBook/{id}")
+    public void deleteBook(@PathVariable int id){
+        bookService.deleteABookById(id);
+    }
+
+
     // *****************
     // USING JPA -- Using JPA Repository methods here to link with service and controller class
 

@@ -25,7 +25,7 @@ public class Book {
     String version;
     @OneToOne
     Rating rating;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     List<Review> reviewList;
 
     public List<Review> getReviewList() {

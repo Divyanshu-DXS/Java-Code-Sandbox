@@ -35,7 +35,7 @@ public class BookService {
     // Add a book
     public List<BookResponseDTO> addABook(BookCreateDTO bookCreateDTO){
         Book entity = BookMapper.toEntity(bookCreateDTO);
-        reviewRepository.saveAll(entity.getReviewList());
+//        reviewRepository.saveAll(entity.getReviewList());
         ratingRepository.save(entity.getRating());
         Book saved = bookRepository.save(entity);
         return bookRepository.findAll().stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());
@@ -89,6 +89,11 @@ public class BookService {
     // finding book by authors using like to match String names
     public List<BookResponseDTO> findByAuthorLike(String name){
         return bookRepository.findByAuthorLike(name).stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());
+    }
+
+    // Deleting a book
+    public void deleteABookById(int id){
+        bookRepository.delete(bookRepository.findById(id));
     }
 
     // Adding a review to a book by name
