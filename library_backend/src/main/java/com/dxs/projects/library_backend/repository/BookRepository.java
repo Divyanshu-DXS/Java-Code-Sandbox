@@ -17,5 +17,9 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM BOOK_DATABASE where author = :author")
     List<Book> gatherListByAuthor(String author);
 
+    List<Book> findByVersionBetween(String a, String b);
+
+    List<Book> findByAuthorLike(String name);
+
 
 }

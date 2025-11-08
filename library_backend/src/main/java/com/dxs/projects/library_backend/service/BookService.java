@@ -7,6 +7,7 @@ import com.dxs.projects.library_backend.entities.Book;
 import com.dxs.projects.library_backend.mapper.BookMapper;
 import com.dxs.projects.library_backend.repository.BookRepository;
 import com.dxs.projects.library_backend.repository.RatingRepository;
+import com.dxs.projects.library_backend.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,8 @@ public class BookService {
     BookRepository bookRepository;
     @Autowired
     RatingRepository ratingRepository;
+    @Autowired
+    ReviewRepository reviewRepository;
 
     // Post DTO Entity Mapping with converter redefining services below
 
@@ -32,6 +35,7 @@ public class BookService {
     // Add a book
     public List<BookResponseDTO> addABook(BookCreateDTO bookCreateDTO){
         Book entity = BookMapper.toEntity(bookCreateDTO);
+        reviewRepository.saveAll(entity.getReviewList());
         ratingRepository.save(entity.getRating());
         Book saved = bookRepository.save(entity);
         return bookRepository.findAll().stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());
@@ -42,7 +46,9 @@ public class BookService {
         List<Book> books = new ArrayList<>();
         for (BookCreateDTO bookCreateDTO : bookCreateDTOS) {
             books.add(BookMapper.toEntity(bookCreateDTO));
+            reviewRepository.saveAll(bookCreateDTO.getReviews());
             ratingRepository.save(bookCreateDTO.getRating());
+
         }
         bookRepository.saveAll(books);
         return bookRepository.findAll().stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());
@@ -70,6 +76,22 @@ public class BookService {
         }
         return bookResponseDTOS;
     }
+
+    // finding list of books using 'between' for versions
+    public List<BookResponseDTO> getBooksBetweenVersion(String a, String b){
+        List<BookResponseDTO> list = new ArrayList<>();
+        for (Book book : bookRepository.findByVersionBetween(a,b)){
+            list.add(BookMapper.toResponseDTO(book));
+        }
+        return  list;
+    }
+
+    // finding book by authors using like to match String names
+    public List<BookResponseDTO> findByAuthorLike(String name){
+        return bookRepository.findByAuthorLike(name).stream().map(BookMapper::toResponseDTO).collect(Collectors.toList());
+    }
+
+    // Adding a review to a book by name
 
 //      ****************** Without using dto and entity mapping below ******************
 //    public List<BookResponseDTO> getAllBooks(){

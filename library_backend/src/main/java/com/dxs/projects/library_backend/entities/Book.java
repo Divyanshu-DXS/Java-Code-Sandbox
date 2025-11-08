@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -24,10 +25,25 @@ public class Book {
     String version;
     @OneToOne
     Rating rating;
+    @OneToMany
+    List<Review> reviewList;
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
 
     public Book() { }
 
     public Rating getRating() {
+        int rate=0;
+        for (Review review: reviewList) {
+            rate+= review.getRating();
+        }
+        rating.setRating(rate/reviewList.size());
         return rating;
     }
 
@@ -35,24 +51,14 @@ public class Book {
         this.rating = rating;
     }
 
-    public Book(int id, String name, String author, String production, String version, Rating rating) {
+    public Book(int id, String name, String author, String production, String version, Rating rating, List<Review> reviewList) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.production = production;
         this.version = version;
-        this.rating=rating;
+        this.rating = rating;
+        this.reviewList = reviewList;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", production='" + production + '\'' +
-                ", version='" + version + '\'' +
-                ", rating='" + rating + '\'' +
-                '}';
-    }
 }

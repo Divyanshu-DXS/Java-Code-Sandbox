@@ -5,6 +5,9 @@ spring:
     url: jdbc:h2:./Mydatabase
     username: admin
     password: admin123
+  output:
+    ansi:
+      enabled: ALWAYS
 #  sql:
 #    init:
 #      mode: always

@@ -56,6 +56,20 @@ public class BookController {
         return bookService.getBooksByAuthorHQL(author);
     }
 
+    // Getting List of books between version a - b
+    @GetMapping("/getBooksBetweenVersions/{verStart}/{verEnd}")
+    public List<BookResponseDTO> getBooksBwVersions(@PathVariable String verStart, @PathVariable String verEnd){
+        return bookService.getBooksBetweenVersion(verStart,verEnd);
+    }
+
+    // Getting list of books uing like keyword to match books
+    // -- REMEMBER: % is a special character when it comes to crafting urls. so when passing this as a parameter in url use %25
+    // %25 means -> %
+    @GetMapping("/getBooksByAuthorLike")
+    public List<BookResponseDTO> getBooksByAuthorLike(@RequestParam String name){
+        return bookService.findByAuthorLike(name);
+    }
+
     // *****************
     // USING JPA -- Using JPA Repository methods here to link with service and controller class
 
