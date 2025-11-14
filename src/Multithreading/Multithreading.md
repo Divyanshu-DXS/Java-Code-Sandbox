@@ -79,3 +79,47 @@ Synchronization is also important. in many cases if multiple threads are accessi
 In that case we can always wrap that method with a synchronization keyword that can make sure that whenever that method is being accessed by a thread, it only allows one thread at a time to execute it.. this can help maintain the concurrency and does not lead to discrepancy.
 But.... this can also lead us into a challenege where if a single resource takes a lot of time, and respurces the other threads are held back from theier executoins, that can weigh heavy on the applicatoins performacnce and resourcefullness. 
 
+### Locks
+
+A lock is a mechanism that allows only one thread at a time to access a shared resource (like a variable or object). In Java, every object has a built-in intrinsic lock, used automatically when you use the synchronized keyword.
+
+### Reentrant Lock
+
+Java also provides the ReentrantLock class for manual control over locking.
+ReentrantLock gives you more power than synchronized, including:
+- Try-locking (tryLock()),
+- Fairness control,
+- Checking if the lock is held,
+- Interruptible locking.
+
+### ReadWrite Lock
+
+Some operations only read shared data and don’t modify it.
+Multiple threads can safely read simultaneously — but if one thread wants to write, it must be exclusive.
+- Many threads can call read() at the same time.
+- Only one thread can call write() at a time — and it blocks all readers too.
+- Great for performance when reads are frequent and writes are rare.
+
+### Fairness of the locks 
+
+When multiple threads are waiting for a lock, the JVM can choose which one gets it next.
+By default, locks are unfair — meaning the most recently waiting thread might get the lock first (better performance but less predictable).
+You can make a lock fair by passing true to the constructor.
+
+### DeadLock
+
+A deadlock occurs when two or more threads are waiting for each other’s locks, so none can proceed.
+How to avoid deadlocks:
+
+- Always acquire locks in the same order.
+- Try using tryLock() with a timeout.
+- Keep lock-holding code blocks short.
+
+A deadlock usually occurs when these 4 conditions are met simultaneously: 
+- When any one thread has acquired and holding a resource and is waiting to acquire another resource that is held by another thread
+- when only one thread can access/acquire a resource at a time 
+- Resources can not be forcibly taken 
+- A set of threads is waiting for each other in a circular chain. 
+
+### Thread Communication 
+
