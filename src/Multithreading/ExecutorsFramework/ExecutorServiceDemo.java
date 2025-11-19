@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class ExecutorServiceDemo {
     public static void main(String[] args) {
@@ -22,19 +23,29 @@ public class ExecutorServiceDemo {
         Future<?> future2 = executor.submit(runnable);
         try {
             future2.get();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-          
-        } 
+        } catch (Exception e) {} 
         // Callable : Returns a value / object | has a call() method | throws exception 
         Callable callable = (()-> 1001);
         Future<Integer> future3 = executor.submit(callable);
         try {
             System.out.println(future3.get());
-        } catch (Exception e) {
+        } catch (Exception e) {}
+        // Runnable, result : Takes a runnable argument, along with a a result that will be returned 
+        Runnable runnable2 = (()->{System.out.println("Inside Runnable 2 ....");});
+        Future<String> future4 = executor.submit(runnable2,"\nRunnable 2 is Working");
+        try{
+            future4.get();
+            System.out.println(future4.get());
+        }catch(Exception e){}
+
+        executor.shutdown();
+        try {
+            executor.awaitTermination(1, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        executor.shutdown();
+        System.out.println(executor.isTerminated());
 
     }
 }
