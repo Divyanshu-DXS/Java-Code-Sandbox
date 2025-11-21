@@ -123,3 +123,144 @@ A deadlock usually occurs when these 4 conditions are met simultaneously:
 
 ### Thread Communication 
 
+- wait()
+- notify()
+- notifyAll()
+
+### Thread Pool 
+
+Collection of threads pre initialized threads that are ready to perform a task 
+
+It helps with : 
+- Resource Management 
+- Control over thread creation and management 
+- Response Time 
+
+
+### Executor Framework 
+
+This was introduced to simplify the development of concurrent applications by abstracting away many of the complexity of creating and managing threads 
+
+#### Why Executor Framework Exists
+
+------------ 
+Before Executors, developers created threads like this:
+ - - new Thread(() -> { /* work */ }).start();
+
+Problems with this old approach:
+
+- manual thread management 
+- scalability 
+- Unbounded thread creation → memory crash
+- No control over scheduling
+- No monitoring
+- No lifecycle management - thread recycling / resource management
+- Hard to cancel/timeout tasks
+- error handling 
+------------ 
+
+Executors solve all of this.
+They give you:
+
+- A thread pool (reusable threads)
+- A task queue
+- Control over lifecycle
+- Support for returning values (Callable/Future)
+- Scheduling tasks
+
+There are 3 core interfaces in this framework 
+- Executor
+- ExecutorService 
+  - newFixedThreadPool()
+  - NewCachedThreadPool()
+- ScheduledExecutorService 
+  - newScheduledThreadPoolExecutor()
+
+### Future
+
+Future is an interface in Java used to represent the result of an asynchronous computation.
+When you submit a task to an ExecutorService, it immediately returns a Future object, which acts like a placeholder for the value that will be computed in the background.
+It allows you to check if the task is complete, retrieve the result, cancel the task, or check for exceptions.
+
+
+#### Executor Service // some common methods
+- .submit(Runnable)
+- .submit(Callable)
+- .submit(Runnable, result)
+- .shutdown()
+- .shutdownNow()
+- .isShutDown()
+- .awaitTermination()
+- .isTerminated()
+- .invokeAll()
+
+ExecutorService's Submit has been overloaded with 3 different types of parameters 
+- Callable - returns any value 
+- Runnable - does not return anything
+- Runnable, result - the get method for this 'Future' object can return an object if needed when the task is completed. 
+
+### Java Count Down Latch
+### Cyclic Barrier
+
+### Completable Future 
+
+Completable future was introduced in java 8 to handle Asynchronous programming. 
+Multi threading is used to achieve asynchronous programming. 
+
+Earlier we used to work with threads, Future, ExecutorService. 
+And it had few problem statements that needed to be solved. 
+- Future result had to be polled 
+- Future could not be cancelled or completed manually 
+- Chaining was not possible
+- Error handling was weak
+- Callback was difficult 
+
+Completable Future was then introduced in java 8 to help us solve these
+
+>> Think like this, You have given someone a task to complete. 
+And you have asked them to complete that task and get the result. 
+Once the result has been received, then you want them to automatically start the next task, and in case if there is an error while accomplishing the task, you want to initiate a backup plan then. .... This is exactly the kind of situation Completable future helps you with. 
+
+- runAsync() -> Does not return any value 
+>> CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+    System.out.println("Background task running...");
+});
+
+- supplyAsync() -> Returns a value
+>> CompletableFuture<String> future =
+    CompletableFuture.supplyAsync(() -> "Data from server");
+
+
+Chaining can be done by .. 
+- thenApply : this helps us modify the result
+>> CompletableFuture<String> processed =
+    CompletableFuture.supplyAsync(() -> "Data")
+                     .thenApply(data -> data + " processed");
+
+- then accept : Consumes the result
+>> .thenAccept(result -> System.out.println("Result: " + result));
+
+- thenRun : the result in this case is not that important, instead it wants the function to do something once the result is received.
+>> .thenRun(() -> System.out.println("Done!")); 
+
+Combine multiple Async tasks : CompletableFuture.allOf(f1,f2); 
+>> CompletableFuture<Integer> f1 = CompletableFuture.supplyAsync(() -> 10);
+CompletableFuture<Integer> f2 = CompletableFuture.supplyAsync(() -> 20);
+CompletableFuture<Void> all = CompletableFuture.allOf(f1, f2);
+all.join();  // Wait until f1 and f2 both finish
+int sum = f1.join() + f2.join();
+
+Similarly there is : CompletableFuture.anyOf(f1,f2);
+>> CompletableFuture.anyOf(f1, f2)
+    .thenAccept(result -> System.out.println("Fastest: " + result));
+
+
+Error Handling : can use .exceptionally in chaining to give a back up value 
+>> CompletableFuture.supplyAsync(() -> {
+    if (true) throw new RuntimeException("Error!");
+    return "OK";
+}).exceptionally(ex -> "Backup value");
+
+<u>By default thread pool used is ForkJoinPool.commonPool. But if needed a custom pool can also be provided ....  </u>
+>> ExecutorService executor = Executors.newFixedThreadPool(5);
+CompletableFuture.supplyAsync(() -> task(), executor);
