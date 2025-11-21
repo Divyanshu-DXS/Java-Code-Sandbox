@@ -21,3 +21,13 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        transaction: TRACE
+      springframework:
+        orm:
+          jpa: TRACE

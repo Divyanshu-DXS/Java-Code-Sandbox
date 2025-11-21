@@ -7,15 +7,22 @@ import lombok.*;
 @Table(name = "emp_info")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
+
+    public Employee(String name) {
+        this.name = name;
+    }
+
+    public Employee() {
+    }
 
     public Integer getId() {
         return id;
@@ -23,5 +30,9 @@ public class Employee {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
