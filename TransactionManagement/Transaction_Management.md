@@ -99,7 +99,7 @@ This usually means, that if a 'Transaction' is running then to join it...
 if no transaction is running then to create a new one.. 
 
 in this case lets say 
->> @Transactional MmethodA() -> calls @Transactional MethodB()
+>> @Transactional MethodA() -> calls @Transactional MethodB()
 
 They run in one single transaction.
 And in this case the transaction inside methodB fails.. 
