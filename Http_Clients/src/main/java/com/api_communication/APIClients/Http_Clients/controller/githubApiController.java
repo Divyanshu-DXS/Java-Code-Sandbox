@@ -1,16 +1,14 @@
 package com.api_communication.APIClients.Http_Clients.controller;
 
-import com.api_communication.APIClients.Http_Clients.model.GitHubRepos;
+import com.api_communication.APIClients.Http_Clients.model.*;
 import com.api_communication.APIClients.Http_Clients.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.PublicKey;
 import java.util.logging.Logger;
 
 @RestController
@@ -43,4 +41,28 @@ public class githubApiController {
         return userService.getReposList(user);
     }
 
+    /*
+    For this part of the demo below here, we will be making use of the simple book api created for practicing requests on 'Postman'
+    Github : https://github.com/vdespa/introduction-to-postman-course/tree/main
+    This repo has a simple book api that we can interact with
+    This API allows you to reserve a book.
+    The API is available at https://simple-books-api.click
+    */
+
+    @GetMapping("/books-api/books")
+    public GithubBooks[] getBooksList(){
+        return userService.getBooks();
+    }
+
+    // Getting a book by id
+    @GetMapping("/books-api/id/{id}")
+    public GithubBooks getBookById(@PathVariable Integer id){
+        return userService.getBookById(id);
+    }
+
+    // Placing an order
+    @PostMapping("/placeOrder")
+    public ResponseEntity<CreateOrderResponse> placeOrder(@RequestBody CreateOrderRequest req){
+        return userService.postOrder(req);
+    }
 }
