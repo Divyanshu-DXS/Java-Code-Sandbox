@@ -1,6 +1,9 @@
 package com.api_communication.APIClients.Http_Clients.controller;
 
+import com.api_communication.APIClients.Http_Clients.DtoMapper.GitHubUserDTO;
+import com.api_communication.APIClients.Http_Clients.config.GitHubBooksFeignClient;
 import com.api_communication.APIClients.Http_Clients.model.*;
+import com.api_communication.APIClients.Http_Clients.service.GithubUsersService;
 import com.api_communication.APIClients.Http_Clients.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,12 @@ public class githubApiController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    GitHubBooksFeignClient gitHubBooksFeignClient;
+
+    @Autowired
+    GithubUsersService githubUsersService;
+
     @GetMapping("/getUser/{name}")
     public ResponseEntity<String> getUserByName(@PathVariable String name){
         return userService.getUser(name);
@@ -31,7 +40,7 @@ public class githubApiController {
 
     // Getting user using web client service method
     @GetMapping("/gettingUsers/{name}")
-    public ResponseEntity<String> getUser(@PathVariable String name){
+    public GitHubUserDTO getUser(@PathVariable String name){
         return userService.getUserWebClient(name);
     }
 
@@ -65,4 +74,18 @@ public class githubApiController {
     public ResponseEntity<CreateOrderResponse> placeOrder(@RequestBody CreateOrderRequest req){
         return userService.postOrder(req);
     }
+
+    // ********************** FEIGN CLIENT WITH POSTMAN BOOKS API **********************
+
+    @GetMapping("/feign-client/books")
+    public GithubBooks[] getallBooks(){
+        return gitHubBooksFeignClient.getBooks();
+    }
+
+    // DTO Mapping and Persisting tests
+    @GetMapping("/getUsersDB/{name}")
+    public GithubUsers getUsersMapped(@PathVariable String name){
+        return githubUsersService.getUser(name);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.api_communication.APIClients.Http_Clients.service;
 
+import com.api_communication.APIClients.Http_Clients.DtoMapper.GitHubUserDTO;
 import com.api_communication.APIClients.Http_Clients.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,14 +42,13 @@ public class UserService {
     @Autowired
     WebClient webClient;
 
-    public ResponseEntity<String> getUserWebClient(String user){
-        String response = webClient.get()
+    public GitHubUserDTO getUserWebClient(String user){
+        return webClient.get()
                 .uri(gitHubHost+githubGetEndpoint+user)
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(GitHubUserDTO.class)
                 .block();
 
-        return ResponseEntity.ok(response);
     }
 
     public GitHubRepos[] getReposList(String user){
@@ -62,6 +62,7 @@ public class UserService {
 
     }
 
+    // ********************** WEB CLIENT WITH POSTMAN BOOKS API **********************
     /*
     For this part of the demo below here, we will be making use of the simple book api created for practicing requests on 'Postman'
     Github : https://github.com/vdespa/introduction-to-postman-course/tree/main
@@ -109,5 +110,12 @@ public class UserService {
                 .toEntity(CreateOrderResponse.class)
                 .block();
     }
+    // ********************** WEB CLIENT WITH POSTMAN BOOKS API **********************
+
+    // ********************** FEIGN CLIENT WITH POSTMAN BOOKS API **********************
+
+    // Get mapping for all books
+
+
 
 }
