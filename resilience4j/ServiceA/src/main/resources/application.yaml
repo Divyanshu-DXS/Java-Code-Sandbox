@@ -5,7 +5,7 @@ spring:
 server:
   port: 8085
 
-#management configuration for the actuator
+# management configuration for the actuator
 
 management:
   health:
@@ -18,3 +18,22 @@ management:
   endpoint:
     web:
       show-details: always
+
+# circuitbreaker configuration
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      service-A:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50 # Percentage of failed calls to trip the circuit
+        minimumNumberOfCalls: 10 # Minimum number of calls before calculating failure rate
+#        slowCallRateThreshold: 100 # Percentage of slow calls to trip the circuit
+#        slowCallDurationThreshold: 2000ms # Duration after which a call is considered slow
+        permittedNumberOfCallsInHalfOpenState: 3 # Number of calls allowed in half-open state
+#        maxWaitDurationInHalfOpenState: 0ms # Max wait duration in half-open state (0ms means no wait)
+        slidingWindowType: COUNT_BASED # Type of sliding window (COUNT_BASED or TIME_BASED)
+        slidingWindowSize: 10 # Size of the sliding window
+        waitDurationInOpenState: 5s # Duration the circuit remains open before transitioning to half-open
+        automaticTransitionFromOpenToHalfOpenEnabled: true # Enable automatic transition
