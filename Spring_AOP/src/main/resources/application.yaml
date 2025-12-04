@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: AopDemo
+  output:
+    ansi:
+      enabled: Always
+
+server:
+  port: 9099
