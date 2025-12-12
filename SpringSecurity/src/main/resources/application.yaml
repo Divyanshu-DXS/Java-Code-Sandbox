@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: SpringSecurity_1
+#logging:
+#  level:
+#    root: debug
