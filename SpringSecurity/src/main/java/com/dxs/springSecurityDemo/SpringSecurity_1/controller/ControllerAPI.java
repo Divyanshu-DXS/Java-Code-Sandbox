@@ -36,4 +36,9 @@ public class ControllerAPI {
     public String whoAmI(Authentication authentication){
         return "The user is " + authentication.getName() + " -> with these roles : " +authentication.getAuthorities();
     }
+
+    @GetMapping("/logout-msg")
+    public String logoutPage(){
+        return "You have successfully logged out!";
+    }
 }

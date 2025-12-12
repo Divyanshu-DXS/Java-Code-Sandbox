@@ -74,26 +74,16 @@ public class  SpringSecurtiyConfiguration {
                                 .requestMatchers("/profile").hasAnyRole("ADMIN","DEV")
                                 .anyRequest().authenticated()
                 )
-                .formLogin()
-                .and()
-                .logout();
+                .formLogin(form -> form
+                .permitAll())
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/logout-msg")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .permitAll());
         return http.build();
     }
 
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity sec) throws Exception {
-//        sec
-//                .csrf(csrf -> csrf.disable())
-//                .authorizeHttpRequests(
-//                        auth-> auth.requestMatchers("/hello").permitAll()
-//                                .requestMatchers("/admin").hasRole("ADMIN")
-//                                .requestMatchers("/profile").hasAnyRole("ADMIN","USER")
-//                                .anyRequest().authenticated()
-//                )
-//                .httpBasic();
-//        sec.authenticationProvider(authenticationProvider());
-//
-//        return sec.build();
-//    }
 
 }
