@@ -1,3 +1,12 @@
 spring:
   application:
     name: ConsumerDemo
+  kafka:
+    consumer:
+      bootstrap-server: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      group-id: user_group
+
+server:
+  port: 8082
