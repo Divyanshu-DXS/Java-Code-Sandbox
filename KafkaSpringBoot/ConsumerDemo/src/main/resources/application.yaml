@@ -7,6 +7,7 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       group-id: user_group
+      auto-offset-reset: earliest
 
 server:
   port: 8082
